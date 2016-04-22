@@ -1,0 +1,142 @@
+/* Font and height */
+html {
+    color: darkslategray;
+    font-size: 12px;
+    font-family: "Courier New", serif;
+}
+
+/* Box-sizing it's now border-box*/
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* Change this margin to select your web-container box margin*/
+.body-container{
+    margin:25px;
+}
+
+/* Deleting unnecessary space*/
+h1, a, h2, h3, h4, h5, h6, ul, ol, li, p {
+    text-decoration:none;
+    padding:0;
+    margin:0;
+}
+
+/* Defining h1, h2, h3*/
+    h1{
+        font-size: 2.5em;
+        padding: 0.5em;
+    }
+    h2{font-size: 1.5em; }
+    h3{font-size: 1.1em; }
+
+/* Color and style of lists and links*/
+    a{color: darkslategray; }
+    a:hover{ color: orangered; }
+    ul,ol{list-style:none; }
+
+button{
+    padding: 20px;
+}
+
+.superh1{
+    font-size: 7em;
+    padding: 20 em;
+}
+
+/* Giving style with classes*/
+.header{
+    background-color: #cbdeff;
+    text-align:center;
+    border-radius: 15px 15px 15px 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.nav{
+    background-color: #e4ffe8;
+    border-radius: 15px 15px 15px 15px;
+    float:left;
+    padding: 15px;
+    width:28%;
+}
+
+.layout{
+    margin-bottom: 25px;
+}
+
+.section{
+    width:68%;
+    float:right;
+    padding: 20px;
+    background-color: lightgray;
+    border-radius: 15px 15px 15px 15px;
+}
+
+.section {
+    margin-bottom:15px;
+}
+
+/*The last section child don't need border*/
+.layout > .section:last-child {
+    margin-bottom:0px;
+}
+
+/*A cool color effect for sections*/
+.section:nth-of-type(2n + 1)
+{
+    background-color: darkgray;
+}
+
+.footer{
+    padding: 15px;
+    font-size: 0.8em;
+    text-align: center;
+    background-color: #466a99;
+    color:white;
+    border-radius: 15px 15px 15px 15px;
+}
+
+/*The clearfix trick - Bye float*/
+.clearfix:before,.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ---------------------------------------------------*/
+/* --------------  EXERCISES -------------------------*/
+/* ---------------------------------------------------*/
+
+/* 2- Add a stylesheet to the index.html. Use the stylesheet to
+center the text of all section elements of the page.*/
+section{
+    text-align:center;
+}
+
+#hide{
+   /* display:none;*/
+    opacity:0;
+
+
+}
+
+#visible{
+    opacity:1;
+
+    /* animation */
+    -webkit-transition: opacity 4s ease-in;
+    -moz-transition: opacity 4s ease-in;
+    -ms-transition: opacity 4s ease-in;
+    -o-transition: opacity 4s ease-in;
+    transition: opacity 4s ease-in;
+}
