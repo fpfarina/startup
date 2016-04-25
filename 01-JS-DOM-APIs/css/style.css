@@ -6,7 +6,9 @@ html {
 }
 
 /* Box-sizing it's now border-box*/
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -14,74 +16,95 @@ html {
 
 /* Change this margin to select your web-container box margin*/
 .body-container{
-    margin:25px;
+    margin: 25px;
 }
 
 /* Deleting unnecessary space*/
-h1, a, h2, h3, h4, h5, h6, ul, ol, li, p {
-    text-decoration:none;
-    padding:0;
-    margin:0;
+h1,
+a,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+p {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
 }
 
 /* Defining h1, h2, h3*/
-    h1{
+    h1 {
         font-size: 2.5em;
-        padding: 0.5em;
+        padding: 6px;
     }
-    h2{font-size: 1.5em; }
-    h3{font-size: 1.1em; }
+    h2 {
+        font-size: 1.5em;
+    }
+    h3 {
+        font-size: 1.1em;
+    }
 
 /* Color and style of lists and links*/
-    a{color: darkslategray; }
-    a:hover{ color: orangered; }
-    ul,ol{list-style:none; }
+    a {
+        color: darkslategray;
+    }
+    a:hover {
+        color: orangered;
+    }
+    ul,
+    ol {
+        list-style:none;
+    }
 
-button{
+button {
     padding: 20px;
 }
 
-.superh1{
+.superh1 {
     font-size: 7em;
-    padding: 20 em;
+    padding: 60px;
 }
 
 /* Giving style with classes*/
 .header{
     background-color: #cbdeff;
-    text-align:center;
-    border-radius: 15px 15px 15px 15px;
+    text-align: center;
+    border-radius: 15px;
     padding: 25px;
     margin-bottom: 25px;
 }
 
 .nav{
     background-color: #e4ffe8;
-    border-radius: 15px 15px 15px 15px;
-    float:left;
+    border-radius: 15px;
+    float: left;
     padding: 15px;
-    width:28%;
+    width: 15%;
 }
 
-.layout{
+.layout {
     margin-bottom: 25px;
 }
 
-.section{
-    width:68%;
-    float:right;
+.section {
+    width: 78%;
+    float: right;
     padding: 20px;
     background-color: lightgray;
-    border-radius: 15px 15px 15px 15px;
+    border-radius: 15px;
 }
 
 .section {
-    margin-bottom:15px;
+    margin-bottom: 15px;
 }
 
 /*The last section child don't need border*/
 .layout > .section:last-child {
-    margin-bottom:0px;
+    margin-bottom: 0;
 }
 
 /*A cool color effect for sections*/
@@ -90,17 +113,18 @@ button{
     background-color: darkgray;
 }
 
-.footer{
+.footer {
     padding: 15px;
     font-size: 0.8em;
     text-align: center;
     background-color: #466a99;
-    color:white;
-    border-radius: 15px 15px 15px 15px;
+    color: white;
+    border-radius: 15px;
 }
 
 /*The clearfix trick - Bye float*/
-.clearfix:before,.clearfix:after {
+.clearfix:before,
+.clearfix:after {
     content: " ";
     display: table;
 }
@@ -119,19 +143,13 @@ button{
 
 /* 2- Add a stylesheet to the index.html. Use the stylesheet to
 center the text of all section elements of the page.*/
-section{
-    text-align:center;
+section {
+    text-align: center;
 }
 
-#hide{
-   /* display:none;*/
-    opacity:0;
-
-
-}
-
-#visible{
-    opacity:1;
+#hide {
+    display: none;
+    opacity: 0;
 
     /* animation */
     -webkit-transition: opacity 4s ease-in;
@@ -139,4 +157,5 @@ section{
     -ms-transition: opacity 4s ease-in;
     -o-transition: opacity 4s ease-in;
     transition: opacity 4s ease-in;
+
 }
