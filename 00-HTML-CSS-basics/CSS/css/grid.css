@@ -6,47 +6,62 @@ html {
 
 /* Medium screens (640px) */
 @media (min-width: 40rem) {
-    html { font-size: 112%; }
+    html {
+        font-size: 112%;
+    }
 }
 
 /* Large screens (1024px) */
 @media (min-width: 64rem) {
-    html { font-size: 120%; }
+    html {
+        font-size: 120%;
+    }
 }
 
 /* Box-sizing it's now border-box*/
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 /* No more default style */
-h1, h2, h3, h4, h5, h6, ul, li, p, a{
-    text-decoration:none;
-    padding:0;
-    margin:0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+p,
+a {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
 }
 
-h1{
+h1 {
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-p{
+p {
     font-size: 1rem;
 }
 
-a{
+a {
     color: black;
     font-weight: bold;
 }
 
-a:hover{
+a:hover {
     color: gray;
 }
 
-.header [class*="col"]{
+.header [class*="col"] {
     padding: 1em 2em;
 }
 
@@ -56,23 +71,22 @@ a:hover{
     max-width: 72rem;
     width: 98%;
     overflow: hidden;
-    /*border-style: dotted;*/
 }
 
 .space {
-    margin-bottom:5px;
+    margin-bottom: 5px;
 }
 
-.grid{
+.grid {
     text-align: center;
 }
 
-.justified{
+.justified {
     text-align: justify;
 }
 
-img{
-    width:100%;
+img {
+    width: 100%;
     filter: url("../recourses/grayscale.svg#gayscale"); /*Firefox*/
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
@@ -80,10 +94,10 @@ img{
     -ms-filter: grayscale(100%);
     -o-filter: grayscale(100%);
     filter: gray;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.info{
+.info {
     height: 100%;
     width: 100%;
     opacity: 0;
@@ -107,7 +121,7 @@ img{
 
 .info:hover {
     opacity: 1;
-    filter:none;
+    filter: none;
 }
 
 /*Style for all .col(N) */
@@ -119,7 +133,7 @@ img{
 }
 
 /* For my grid i select a very similar syntax to Bootstrap*/
-/*In 40 rem- i will convert 5 cols in 1 col*/
+/*In 40 rem- i will convert 6 cols in 1 col*/
 @media (min-width: 40rem) {
 
     .container {margin: 2em auto;}
@@ -131,55 +145,152 @@ img{
         float: left;
     }
 
-    .col1, .col2, .col3, .col4, .col5, .col6 {width:  50%; } /* 1/6 width */
-    .col7, .col8, .col9, .col10, .col11, .col12 {width: 100%; } /* 1 width */
+    /* In small devices. Cols smaller than 6 will take half of the screen*/
+    /*1/2 width */
+    .col1,
+    .col2,
+    .col3,
+    .col4,
+    .col5,
+    .col6 {
+        width:  50%;
+    }
+
+    /* In small devices. Cols bigger than 6 will take the total of the screen*/
+    /* 1 width */
+    .col7,
+    .col8,
+    .col9,
+    .col10,
+    .col11,
+    .col12 {
+        width: 100%;
+    }
 
     /*Image format*/
-    img{
-        width:95%;
-        height:12em;
+    img {
+        width: 95%;
+        height: 12em;
         /* max-width:100%;*/
     }
 
-    h1, p{
+    h1,
+    p {
         font-size: 0.9rem;
     }
 
-    .header [class*="col"]{
+    .header [class*="col"] {
         padding: 0 2em;
     }
 }
 
-/*In 50 rem- i will convert the 2 cols in 1 col*/
+/*In 50 rem- i will convert 2 cols in 1 col*/
 @media (min-width: 50rem) {
 
-    .col1, .col2 {width: 16.33%; } /* 1/6 width */
-    .col3, .col4 {width: 33.33%; } /* 1/3 width */
-    .col5, .col6 {width: 50%; } /* 1/2 width */
-    .col7, .col8 {width: 66.66%; } /* 2/3 width */
-    .col9, .col10 {width: 75%; } /* 3/4 width */
-    .col11, .col12 {width: 100%; } /* 1 width */
+    /* 1/6 width */
+    .col1,
+    .col2 {
+        width: 16.33%;
+    }
+
+    /* 1/3 width */
+    .col3,
+    .col4 {
+        width: 33.33%;
+    }
+
+    /* 1/2 width */
+    .col5,
+    .col6 {
+        width: 50%;
+    }
+
+    /* 2/3 width */
+    .col7,
+    .col8 {
+        width: 66.66%;
+    }
+
+    /* 3/4 width */
+    .col9,
+    .col10 {
+        width: 75%;
+    }
+
+    /* 1 width */
+    .col11,
+    .col12 {
+        width: 100%;
+    }
 }
 
 /* I select a very similar syntax to Bootstrap*/
 @media (min-width: 64rem) {
 
-    .col1 {width: 8.33%; } /* 1/12 width */
-    .col2 {width: 16.66%; } /* 1/6 width */
-    .col3 {width: 25%; } /* 1/4 width */
-    .col4 {width: 33.33%; } /* 1/3 width */
-    .col5 {width: 41.66%; } /* 5/12 width */
-    .col6 {width: 50%; } /* 1/2 width */
-    .col7 {width: 58.33%; } /* 7/12 width */
-    .col8 {width: 66.66%; } /* 2/3 width */
-    .col9 {width: 75%; } /* 3/4 width */
-    .col10 {width: 83.33%; } /* 5/6 width */
-    .col11 {width: 91.66%; } /* 11/12 width */
-    .col12 {width: 100%; } /* 1 width */
+    /* 1/12 width */
+    .col1 {
+        width: 8.33%;
+    }
+
+    /* 1/6 width */
+    .col2 {
+        width: 16.66%;
+    }
+
+    /* 1/4 width */
+    .col3 {
+        width: 25%;
+    }
+
+    /* 1/3 width */
+    .col4 {
+        width: 33.33%;
+    }
+
+    /* 5/12 width */
+    .col5 {
+        width: 41.66%;
+    }
+
+    /* 1/2 width */
+    .col6 {
+        width: 50%;
+    }
+
+    /* 7/12 width */
+    .col7 {
+        width: 58.33%;
+    }
+
+    /* 2/3 width */
+    .col8 {
+        width: 66.66%;
+    }
+
+    /* 3/4 width */
+    .col9 {
+        width: 75%;
+    }
+
+    /* 5/6 width */
+    .col10 {
+        width: 83.33%;
+    }
+
+    /* 11/12 width */
+    .col11 {
+        width: 91.66%;
+    }
+
+    /* 1 width */
+    .col12 {
+        width: 100%;
+    }
 }
 
 /*A clearfix trick*/
-    .clearfix:before,.clearfix:after {
+    .clearfix:before,
+    .clearfix:after {
         content: " ";
         display: table;
     }
