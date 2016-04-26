@@ -80,7 +80,7 @@ button {
 
 .nav{
     background-color: #e4ffe8;
-    border-radius: 15px;
+    border-radius: 2%;
     float: left;
     padding: 15px;
     width: 20%;
@@ -90,9 +90,21 @@ button {
     margin-bottom: 25px;
 }
 
-.section {
-    width: 78%;
+
+.cont_section {
+    width: 55%;
+    float: left;
+    margin-left: 2%;
+}
+
+.right_window {
+    padding: 20px;
+    text-align: left;
+    width: 23%;
     float: right;
+}
+
+.section {
     padding: 20px;
     background-color: lightgray;
     border-radius: 15px;
@@ -134,7 +146,7 @@ button {
 }
 
 .clearfix {
-    *zoom: 1;
+    zoom: 1;
 }
 
 /* ---------------------------------------------------*/
@@ -168,10 +180,28 @@ section {
     font-weight: bold;
 }
 
+#ex-input {
+    margin-top: 5px;
+    width:100%;
+}
+
 #contH {
     -webkit-transition: background 250ms ease-in;
     -moz-transition: background 250ms ease-in;
     -ms-transition: background 250ms ease-in;
     -o-transition: background 250ms ease-in;
     transition: background 250ms ease-in;
+}
+
+aside li:hover{
+    background-color: navajowhite;
+}
+
+#opt{
+    cursor:default;
+    margin: 2px auto;
+    width:60px;
+}
+#opt:hover{
+    color:white;
 }

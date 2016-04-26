@@ -19,66 +19,79 @@
 
             <div class="layout clearfix">
                 <nav class="nav">
-                    <h2>Menu - Joke method:</h2>
+                    <h2>Menu - Select action:</h2>
                     <br>
                     <form>
-                        <input title="Ex 7" type="radio" name="ex" value="7" checked>&nbsp;Ex. 7  (KEY) - Ajax call with config object<br>
-                        <input title="Ex 6" type="radio" name="ex" value="6">&nbsp;Ex. 6 - <br>
+                        <label><input title="Ex 7" type="radio" name="ex" value="7" checked>&nbsp;<strong>Ex. 7 (KEY) - </strong> Ajax call with config object<br></label>
+                        <label><input title="Ex 6" type="radio" name="ex" value="6">&nbsp;<strong>Ex. 6 - </strong>A simple joke<br></label>
+                        <label><input title="Ex 9" type="radio" name="ex" value="9">&nbsp;<strong>Ex. 9 - </strong>Repository full_name list of search 'JavaScript' <br></label>
+                        <label> <input id= "ex" title="Ex 10" type="radio" name="ex" value="10">&nbsp;<strong>Ex. 10 (KEY) - </strong> SEARCH REPOSITORY:<br></label>
+                        <label><input id="ex-input" title="Ex 10 - input" type="text" name="ex-input" value="Globant" disabled></label>
                     </form>
                 </nav>
 
-                <section id="hide" class="section hidden-section">
-                    <header class="cont">
-                        <h1 class="superh1">Hello World</h1>
-                    </header>
-                </section>
+                <div class="cont_section">
+                    <section id="hide" class="section hidden-section">
+                        <header class="cont">
+                            <h2 class="superh1">Hello World</h2>
+                        </header>
+                    </section>
 
-                <section id="contH" class="section">
-                        <button id="joke" type="button" value="joke">Free jokes!! CLICK ME</button>
-                        <input id="advice" title="advice" value="nothing" type="text" disabled>
-                </section>
+                    <section id="contH" class="section">
+                            <h2 id="opt">OP: 1</h2>
+                            <button id="joke" type="button" value="joke">Master Button!! CLICK ME</button>
+                            <input id="advice" title="advice" value="nothing - select a left option and click the button" type="text" disabled>
+                    </section>
 
-                <section class="section">
-                    <h2>&lt;Section1&gt;</h2>
-                    <header class="cont">
-                        <h3>&lt;Section Header&gt;</h3>
-                    </header>
-                    <article class="cont">
-                        <h3>&lt;Article&gt;</h3>
-                        <p>This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information.</p>
-                    </article>
-                    <footer class="cont">
-                        <h3>&lt;Section footer&gt;</h3>
-                    </footer>
-                </section>
+                    <section class="section">
+                        <h2>&lt;Section1&gt;</h2>
+                        <header class="cont">
+                            <h3>&lt;Section Header&gt;</h3>
+                        </header>
+                        <article class="cont">
+                            <h3>&lt;Article&gt;</h3>
+                            <p>This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information.</p>
+                        </article>
+                        <footer class="cont">
+                            <h3>&lt;Section footer&gt;</h3>
+                        </footer>
+                    </section>
 
-                <section class="section">
-                    <h2>&lt;Section2&gt;</h2>
-                    <header class="cont">
-                        <h3>&lt;Section Header&gt;</h3>
-                    </header>
-                    <article class="cont">
-                        <h3>&lt;Article&gt;</h3>
-                        <p>This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information.</p>
-                    </article>
-                    <footer class="cont">
-                        <h3>&lt;Section footer&gt;</h3>
-                    </footer>
-                </section>
+                    <section class="section">
+                        <h2>&lt;Section2&gt;</h2>
+                        <header class="cont">
+                            <h3>&lt;Section Header&gt;</h3>
+                        </header>
+                        <article class="cont">
+                            <h3>&lt;Article&gt;</h3>
+                            <p>This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information.</p>
+                        </article>
+                        <footer class="cont">
+                            <h3>&lt;Section footer&gt;</h3>
+                        </footer>
+                    </section>
 
-                <section class="section">
-                    <h2>&lt;Section3&gt;</h2>
-                    <header class="cont">
-                        <h3>&lt;Section Header&gt;</h3>
-                    </header>
-                    <article class="cont">
-                        <h3>&lt;Article&gt;</h3>
-                        <p>This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information.</p>
-                    </article>
-                    <footer class="cont">
-                        <h3>&lt;Section footer&gt;</h3>
-                    </footer>
-                </section>
+                    <section class="section">
+                        <h2>&lt;Section3&gt;</h2>
+                        <header class="cont">
+                            <h3>&lt;Section Header&gt;</h3>
+                        </header>
+                        <article class="cont">
+                            <h3>&lt;Article&gt;</h3>
+                            <p>This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information.</p>
+                        </article>
+                        <footer class="cont">
+                            <h3>&lt;Section footer&gt;</h3>
+                        </footer>
+                    </section>
+                </div>
+
+                <aside class="right_window">
+                    <h2>Repository list.</h2>
+                    <ul id="repository">
+                        <li>* empty</li>
+                    </ul>
+                </aside>
             </div>
 
             <footer class="footer clearfix">

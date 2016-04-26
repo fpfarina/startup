@@ -10,7 +10,7 @@ var JSuccess = false;
 
 /* It will clear all the content of a give node.
 *  Method: Just looks for all childNodes of a given node and delete one by one.*/
-function removeAllChilds(node){
+function removeAllChildNodes(node){
     while ( node.hasChildNodes() ) {
         node.removeChild(node.firstChild);
     }
@@ -39,7 +39,7 @@ function tellMeAJoke(){
         if (Clicks == callId){ //Is it the last call?
             showJoke(req); // This function it's the one that show JOKES. It's used by exercises 6 and 7.
             changeColor("green");
-            changeAdvice("SUCCESS!!");
+            changeAdvice("JOKE SUCCESS!!");
             JSuccess = true;
         }
     });
@@ -66,7 +66,7 @@ function showJoke (reqJSON){
         var cont = document.createTextNode(reqParse.value.joke); // new element <p> content
         elem.appendChild(cont); // insert node cont in node elem <p>
         var where = document.getElementById("hide"); // looking for the section where i will work
-        removeAllChilds(where); // this function remove all childs of a node, in this case, it will delete all the content
+        removeAllChildNodes(where); // this function remove all childs of a node, in this case, it will delete all the content
         where.appendChild(elem.appendChild(cont)); // insert the <p> element with its content in the section "hide"
         where.style.fontSize= "20px"; // Some style for a better watching
         where.style.fontWeight = "bold";
@@ -115,17 +115,16 @@ function prepareAJAXCall(){
     config.async = true; //async
     config.hidePassword = false; //my password will be not a secret if you are looking the console
     config.url = "http://api.icndb.com/jokes/random"; //src
-    config.info(); //print the object in the console, just for debugging
+    //config.info(); //print the object in the console, just for debugging
     AJAXCall(config).then(function(req) { //Success function to promise
         changeColor("green");
-        changeAdvice("SUCCESS!!");
+        changeAdvice("JOKE SUCCESS!!");
         showJoke(req); //Show Joke
     }, function(error) { //Error function to promise
-        var txt = "";
-        txt = error.toString().slice(7);
-        var first = txt[0];
-        console.log("!AJAXCall error >> " + txt);
-        changeAdvice("ERROR: " + txt.slice(1)); //Show Error
+        var first = error[0];
+        console.log ("Oh no!!" + Clicks)
+        console.log("!AJAXCall error >> " + error.slice(1));
+        changeAdvice("ERROR: " + error.slice(1)); //Show Error
         switch (first) {
             case "1":
             case "2":
@@ -162,29 +161,95 @@ function changeAdvice(txt){
 
 function AJAXCall(config) {
     return new Promise(function (succeed, fail) {
+        config.info;
         var actions = ["GET", "POST", "PUT", "DELETE"];
-        if (actions.indexOf(config.action) == -1) { //Bad input
-            fail(new Error("1" + config.action + " is not a valid method. Please select one of this: " +
-                "GET, POST, PUT or DELETE."));
-            return;
-        }
-        if (typeof(config.async) != "boolean") { //Bad input
-            fail(new Error("2config.async must be BOOLEAN."));
-            return;
-        }
-        var req = new XMLHttpRequest();
-        req.open(config.action, config.url, config.async, config.user, config.password);
-        req.addEventListener("load", function () {
-            if (req.status < 400) { //Success?
-                succeed(req); //Yes!
+        var error = "";
+        if (actions.indexOf(config.action) == -1) { //Check a bad input
+            error = "1" + config.action + " is not a valid method. Select one of this: " +
+                "GET, POST, PUT or DELETE.";
+            fail(error);
+        } else {
+            if (typeof(config.async) != "boolean") { //Check a bad input
+                error = "2config.async must be BOOLEAN.";
+                fail(error);
+            } else {
+                var req = new XMLHttpRequest();
+                req.open(config.action, config.url, config.async, config.user, config.password);
+                req.addEventListener("load", function () {
+                    if (req.status < 400) { //Success?
+                        succeed(req); //Yes!
+                    }
+                    else
+                        error = ("3" + req.statusText);
+                        fail(error);//No!
+                });
+                req.addEventListener("error", function () {
+                    error = "4Network error.";
+                    fail(error); //Network error.
+                });
+                req.send(config.send);
             }
-            else
-                fail(new Error("3"+req.statusText)); //No!
-        });
-        req.addEventListener("error", function () {
-            fail(new Error("4Network error.")); //Network error.
-        });
-        req.send(config.send);
+        }
+    });
+}
+
+function showRepository (reqJSON, src){
+    if (reqJSON.status < 400){ // if < 400 ->> Success!
+        var reqParse = JSON.parse(reqJSON.responseText); // parse the Json answer
+        /* console.log(reqParse); // [type (string), value (object)]
+         console.log(reqParse.items); // [id (integer), joke(string), categories(array)]
+         console.log(reqParse.items[0]);
+         console.log(reqParse.items[0]["full_name"]); // categories elements
+        */
+        var where = document.getElementById("repository"); // looking for the section where i will work
+        removeAllChildNodes(where); // this function remove all childs of a node, in this case, it will delete all the content
+
+        if (reqParse.items.length != 0) {
+            var i = 0;
+            while (i < reqParse.items.length) {
+                var elem = document.createElement("li"); // new element <p>
+                var cont = document.createTextNode("* " + reqParse.items[i]["full_name"]); // new element <p> content
+                elem.appendChild(cont); // insert node cont in node elem <p>
+
+                where.appendChild(elem); // insert the <p> element with its content in the section "hide"
+                i++;
+            }
+        }
+        else {
+            changeColor("orange");
+            changeAdvice("No results for: " + src.slice(src.indexOf("?")+ 3));
+            where.appendChild(document.createElement("li").appendChild(document.createTextNode("* empty")));
+        }
+    }
+}
+
+function repository(src){
+    var config = new CONFIG(); //Creating the config object.
+    config.async = true; //async
+    config.url = "http://api.github.com/search/repositories?q='" + src + "'"; //src
+    config.info();
+    AJAXCall(config).then(function(req) { //Success function to promise
+            changeColor("green");
+            console.log("ok" + req);
+            changeAdvice("SEARCH SUCCESS!!");
+            showRepository(req, config.url); //Show Joke
+        }, function(error) { //Error function to promise
+             var first = error[0];
+             console.log("!AJAXCall error >> " + error.slice(1));
+             changeAdvice("ERROR: " + error.slice(1)); //Show Error
+             switch (first) {
+             case "1":
+             case "2":
+             changeColor("mediumvioletred");
+             break;
+             case "3":
+             changeColor("red");
+             break;
+             case "4":
+             changeColor("orangered");
+             break;
+             }
+             console.log("error");
     });
 }
 
@@ -206,6 +271,34 @@ document.addEventListener("DOMContentLoaded", function() {
             if (option[0].checked) // EX 7
                 prepareAJAXCall();
             else
-                tellMeAJoke(); // EX 6
+                if (option[1].checked)
+                    tellMeAJoke(); // EX
+                else
+                    if (option[2].checked)
+                        repository("JavaScript");
+                    else
+                        if (option[3].checked)
+                            repository(document.getElementById("ex-input").value);
+                        else
+                            matrixToTable(matrix);
     });
+
+    function whoIsChecked(){
+        var i = 0;
+        var ex = document.getElementsByName("ex");
+        for (i;i<ex.length;i++){
+            if (ex[i].checked)
+                return (i+1);
+        }
+    }
+
+        var t = 0;
+        var ex = document.getElementsByName("ex");
+        for (t;t<ex.length;t++){
+            ex[t].addEventListener("click", function(){
+                document.getElementById("opt").innerHTML = "OP: " + whoIsChecked();
+                document.getElementById("ex-input").disabled = !(document.getElementsByName("ex")[3].checked);
+            });
+        }
+
 });
