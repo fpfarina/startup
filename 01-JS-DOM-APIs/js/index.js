@@ -3,10 +3,14 @@
 /* The global variable firstClick advices if the user has pressed the button for first time. This variable
 *  its used, because the first joke will be shown by the EX 6, while the next jokes will be shown by the
 *  AJAX Call of the EX 7.
-*  firstClick = false; The user hasn't pressed the button yet.
-*  firstClick = true; Tue user has pressed the button for first time.
+*  firstClick = 0; The user hasn't pressed the button yet.
+*  firstClick > 0; Tue user has pressed the button for first time.
  */
-var firstClick = false;
+var firstClick = 0;
+
+/* The global variable JSuccess it's used at exercise 6, to determinate with the timer if the server has answered.
+*/
+var JSuccess = false;
 
 /* This function removes all child nodes of a given node.
 * Just looks for all the childs and delete one by one.*/
@@ -22,8 +26,17 @@ function removeAllChilds(node){
 function tellMeAJoke(){
     var req = new XMLHttpRequest(); //A new HttpRequest object
     req.open ("GET", "http://api.icndb.com/jokes/random", true); //Configuration: GET - src - Async
+    setTimeout(function(){
+        if (firstClick < 2 && JSuccess == false){
+            changeColor("red");
+            changeAdvice("ERROR: Time OUT!!");
+        }
+    },4000);
     req.addEventListener("load", function(){ // When the server answer --> show the joke!!.
         showJoke(req); // This function it's the one that show JOKES. It's used by both 1.6 and 1.7 exercises.
+        changeColor("green");
+        changeAdvice("SUCCESS!!");
+        JSuccess = true;
     });
     req.send(null); // send the HttpRequest.
 }
@@ -97,7 +110,41 @@ function prepareAJAXCall(){
     config.hidePassword = false; //my password will be not a secret if you are looking the console
     config.url = "http://api.icndb.com/jokes/random"; //src
     config.info(); //print the object in the console, just for debugging
-    AJAXCall(config, showJoke); //call AJAXCall
+    AJAXCall(config).then(function(req) {
+        changeColor("green");
+        changeAdvice("SUCCESS!!");
+        showJoke(req);
+    }, function(error) {
+        var txt = "";
+        txt = error.toString().slice(7);
+        var first = txt[0];
+        console.log("!AJAXCall error >> " + txt);
+        changeAdvice("ERROR: " + txt.slice(1));
+        switch (first) {
+            case "1":
+            case "2":
+                changeColor("mediumvioletred");
+                break;
+            case "3":
+                changeColor("red");
+                break;
+            case "4":
+                changeColor("orangered");
+                break;
+        }
+    });
+}
+
+/* EX 9 */
+function changeColor(color){
+    document.getElementById("joke").parentNode.style.background = "lightgray";
+    setTimeout(function(){
+        document.getElementById("joke").parentNode.style.background = color;
+    }, 250);
+}
+
+function changeAdvice(txt){
+    document.getElementById("advice").value = txt;
 }
 
 
@@ -105,23 +152,33 @@ function prepareAJAXCall(){
 *  This function makes an AJAX Call.
 *  AJAXCall (config, callback) where config is a CONFIG object and callback is a function()
  */
-function AJAXCall(config, callback){
 
-    var actions = ["GET", "POST", "PUT", "DELETE"];
-    if (actions.indexOf(config.action) == -1) {
-        return ("!AJAXCall error >> " + config.action + " is not a valid method. Please select one of this: " +
-        "GET, POST, PUT or DELETE.");
-    }
-    if (typeof(config.async) != "boolean"){
-        return ("!AJAXCall error >> config.async must be BOOLEAN.");
-    }
-
-    var req = new XMLHttpRequest();
-    req.open(config.action, config.url, config.async, config.user, config.password);
-    req.addEventListener("load", function (){
-        callback (req);
+function AJAXCall(config) {
+    return new Promise(function (succeed, fail) {
+        var actions = ["GET", "POST", "PUT", "DELETE"];
+        if (actions.indexOf(config.action) == -1) {
+            fail(new Error("1" + config.action + " is not a valid method. Please select one of this: " +
+                "GET, POST, PUT or DELETE."));
+            return;
+        }
+        if (typeof(config.async) != "boolean") {
+            fail(new Error("2config.async must be BOOLEAN."));
+            return;
+        }
+        var req = new XMLHttpRequest();
+        req.open(config.action, config.url, config.async, config.user, config.password);
+        req.addEventListener("load", function () {
+            if (req.status < 400) {
+                succeed(req);
+            }
+            else
+                fail(new Error("3"+req.statusText));
+        });
+        req.addEventListener("error", function () {
+            fail(new Error("4Network error."));
+        });
+        req.send(config.send);
     });
-    req.send(config.send);
 }
 
 // Before doing anything, we want the DOMContentLoaded.
@@ -137,14 +194,15 @@ document.addEventListener("DOMContentLoaded", function() {
     , 1);
 
     document.getElementById("joke").addEventListener("click", function(){ //When the user click the "joke" button
-        if (firstClick) { //if not is the first click -> EX 7
+        if (firstClick > 0) { //if not is the first click -> EX 7
             prepareAJAXCall();
         }
         else
         {
             tellMeAJoke(); //if is the first click -> EX 6
-            firstClick = true;
+
         }
+        firstClick =+ 1;
     });
 });
 

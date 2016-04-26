@@ -159,3 +159,19 @@ section {
     transition: opacity 4s ease-in;
 
 }
+
+#advice {
+    text-align: center;
+    display: block;
+    margin: 10px auto 5px auto;
+    width: 100%;
+    font-weight: bold;
+}
+
+#contH {
+    -webkit-transition: background 250ms ease-in;
+    -moz-transition: background 250ms ease-in;
+    -ms-transition: background 250ms ease-in;
+    -o-transition: background 250ms ease-in;
+    transition: background 250ms ease-in;
+}
