@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Topic 1: JavaScript, and DOM APIs -->
+    <head>
+        <meta charset="UTF-8">
+        <title>Topic 1: JavaScript, and DOM APIs</title>
+        <link href="css/normalize.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <script type="text/javascript" src="js/index.js"></script>
+    </head>
+
+    <body>
+
+        <div class="body-container">
+            <header class="header">
+                <h1>Topic 1: JavaScript, and DOM APIs</h1>
+                <h4>Exercises resolution.</h4>
+            </header>
+
+            <div class="layout clearfix">
+                <nav class="nav">
+                    <h2>Menu - Select action</h2>
+                    <br>
+                    <form>
+                        <p><strong>Note:</strong> Uses the master button to execute the selected action:</p><br>
+                        <label><input title="Ex7" type="radio" name="ex" value="1" checked>&nbsp;<strong>Ex. 7 (KEY) - </strong> Tell me a joke - Using a config object and promise objects<br></label>
+                        <label><input title="Ex6" type="radio" name="ex" value="2">&nbsp;<strong>Ex. 6 - </strong>A simple joke - Just a "GET" request<br></label>
+                        <label><input title="Ex9" type="radio" name="ex" value="3">&nbsp;<strong>Ex. 9 - </strong>Searching in JavaScript for repositories that match with 'JavaScript'<br></label>
+                        <label> <input id= "ex" title="Ex10" type="radio" name="ex" value="4">&nbsp;<strong>Ex. 10 (KEY) - </strong> SEARCH A REPOSITORY in GitHub:<br></label>
+                        <input id="ex-input" title="Ex10 - input" type="text" name="ex-input" value="Globant" disabled>
+                        <br>
+                        <label> <input title="Ex 12" type="radio" name="ex" value="5">&nbsp;<strong>Ex. 12 (KEY) - </strong> MATRIX TO TABLE. Input the length to generate a random matrix:<br></label>
+                         <input id="x1-input" title="Ex12 - input" type="text" name="x1-input" value="5" disabled>
+                        &nbsp;X&nbsp;
+                        <input id="x2-input" title="Ex12 - input" type="text" name="x2-input" value="5" disabled>
+                    </form>
+                </nav>
+
+                <div class="cont_section">
+                    <section id="hide" class="section hidden-section">
+                        <header class="cont">
+                            <h2 class="superh1">Hello World</h2>
+                        </header>
+                    </section>
+
+                    <section id="contH" class="section">
+                            <h2 id="opt">OP: 1</h2>
+                            <button id="joke" type="button" value="joke">Master Button!! CLICK ME</button>
+                            <input id="advice" title="advice" value="Select an option at left nav and click the master button to execute it." type="text" disabled>
+                    </section>
+
+                    <section class="section">
+                        <h2>&lt;Section1&gt;</h2>
+                        <header class="cont">
+                            <h3>&lt;Section Header&gt;</h3>
+                        </header>
+                        <article class="cont">
+                            <h3>&lt;Article&gt;</h3>
+                            <p>This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information.</p>
+                        </article>
+                        <footer class="cont">
+                            <h3>&lt;Section footer&gt;</h3>
+                        </footer>
+                    </section>
+
+                    <section class="section">
+                        <h2>&lt;Section2&gt;</h2>
+                        <header class="cont">
+                            <h3>&lt;Section Header&gt;</h3>
+                        </header>
+                        <article class="cont">
+                            <h3>&lt;Article&gt;</h3>
+                            <p>This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information.</p>
+                        </article>
+                        <footer class="cont">
+                            <h3>&lt;Section footer&gt;</h3>
+                        </footer>
+                    </section>
+
+                    <section class="section">
+                        <h2>&lt;Section3&gt;</h2>
+                        <header class="cont">
+                            <h3>&lt;Section Header&gt;</h3>
+                        </header>
+                        <article class="cont">
+                            <h3>&lt;Article&gt;</h3>
+                            <p>This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information. This is a very interesting article with a lot of really useful information.</p>
+                        </article>
+                        <footer class="cont">
+                            <h3>&lt;Section footer&gt;</h3>
+                        </footer>
+                    </section>
+                </div>
+
+                <aside class="right_window">
+                    <h2>Repository list.</h2>
+                    <ul id="repository">
+                        <li>* empty</li>
+                    </ul>
+                </aside>
+            </div>
+
+            <footer class="footer clearfix">
+                <h2>&lt;Footer&gt;</h2>
+                <p>This html document is for the bootcamp.</p>
+            </footer>
+        </div>
+    </body>
+</html>

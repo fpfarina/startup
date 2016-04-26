@@ -1,0 +1,221 @@
+/* Font and height */
+html {
+    color: darkslategray;
+    font-size: 12px;
+    font-family: "Courier New", serif;
+}
+
+/* Box-sizing it's now border-box*/
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* Change this margin to select your web-container box margin*/
+.body-container{
+    margin: 25px;
+}
+
+/* Deleting unnecessary space*/
+h1,
+a,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+p {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Defining h1, h2, h3*/
+    h1 {
+        font-size: 2.5em;
+        padding: 6px;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    h3 {
+        font-size: 1.1em;
+    }
+
+/* Color and style of lists and links*/
+    a {
+        color: darkslategray;
+    }
+    a:hover {
+        color: orangered;
+    }
+    ul,
+    ol {
+        list-style:none;
+    }
+
+button {
+    padding: 20px;
+}
+
+.superh1 {
+    font-size: 7em;
+    padding: 60px;
+}
+
+/* Giving style with classes*/
+.header{
+    background-color: #cbdeff;
+    text-align: center;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.nav{
+    background-color: #e4ffe8;
+    border-radius: 2%;
+    float: left;
+    padding: 15px;
+    width: 20%;
+}
+
+.layout {
+    margin-bottom: 25px;
+}
+
+
+.cont_section {
+    width: 55%;
+    float: left;
+    margin-left: 2%;
+}
+
+.right_window {
+    padding: 20px;
+    text-align: left;
+    width: 23%;
+    float: right;
+}
+
+.section {
+    padding: 20px;
+    background-color: lightgray;
+    border-radius: 15px;
+}
+
+.section {
+    margin-bottom: 15px;
+}
+
+/*The last section child don't need border*/
+.layout > .section:last-child {
+    margin-bottom: 0;
+}
+
+/*A cool color effect for sections*/
+.section:nth-of-type(2n + 1)
+{
+    background-color: darkgray;
+}
+
+.footer {
+    padding: 15px;
+    font-size: 0.8em;
+    text-align: center;
+    background-color: #466a99;
+    color: white;
+    border-radius: 15px;
+}
+
+/*The clearfix trick - Bye float*/
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+/* ---------------------------------------------------*/
+/* --------------  EXERCISES -------------------------*/
+/* ---------------------------------------------------*/
+
+/* 2- Add a stylesheet to the index.html. Use the stylesheet to
+center the text of all section elements of the page.*/
+section {
+    text-align: center;
+}
+
+#hide {
+    display: none;
+    opacity: 0;
+    overflow: scroll;
+
+    /* animation */
+    -webkit-transition: opacity 4s ease-in;
+    -moz-transition: opacity 4s ease-in;
+    -ms-transition: opacity 4s ease-in;
+    -o-transition: opacity 4s ease-in;
+    transition: opacity 4s ease-in;
+
+}
+
+#advice {
+    text-align: center;
+    display: block;
+    margin: 10px auto 5px auto;
+    width: 100%;
+    font-weight: bold;
+}
+
+#ex-input {
+    margin-top: 5px;
+    width:100%;
+}
+
+#contH {
+    -webkit-transition: background 250ms ease-in;
+    -moz-transition: background 250ms ease-in;
+    -ms-transition: background 250ms ease-in;
+    -o-transition: background 250ms ease-in;
+    transition: background 250ms ease-in;
+}
+
+aside li{
+    cursor: default;
+}
+
+aside li:hover{
+    background-color: navajowhite;
+}
+
+#opt{
+    cursor:default;
+    margin: 2px auto;
+    width:60px;
+}
+#opt:hover{
+    color:darkgray;
+}
+
+#x1-input,
+#x2-input{
+    width: 30%;
+}
+
+input {
+    margin: 5px;
+}
