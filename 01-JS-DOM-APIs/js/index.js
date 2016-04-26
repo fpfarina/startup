@@ -8,7 +8,7 @@ var Clicks = 0;
  * showing old "time out" errors. */
 var JSuccess = false;
 
-/* It will clear all the content of a give node.
+/* It will clear all the content of a DOM given node.
 *  Method: Just looks for all childNodes of a given node and delete one by one.*/
 function removeAllChildNodes(node){
     while ( node.hasChildNodes() ) {
@@ -18,9 +18,10 @@ function removeAllChildNodes(node){
 
 /* EX 6 - This function uses XMLHttpRequest, to get a joke from the given source.
  * This function it's really basic, in the EX 1.7 i've make a better implementation.
- * It can't determinate what kind of error it's happening, only send a "Time out error".
+ * In case of an erro ocurr, it can't determinate what kind of error it's happening, 
+ * it will only send a "Time out error".
  * Any new click on the button will kill the last call. To make this happen, i use the global variable Clicks.
- * If the callId is equal to Click, tue function will show the joke / error because it's match with the last
+ * If (callId) is equal to (Click), the function will show a joke or an error because it's match with the last
  * click, but if not, it'll do nothing. I know it's not efficient.*/
 function tellMeAJoke(){
     JSuccess = false; ///* Set the global variable JSuccess to false. Tt's used

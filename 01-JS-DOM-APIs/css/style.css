@@ -194,6 +194,10 @@ section {
     transition: background 250ms ease-in;
 }
 
+aside li{
+    cursor: default;
+}
+
 aside li:hover{
     background-color: navajowhite;
 }
