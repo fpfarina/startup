@@ -37,6 +37,7 @@ function tellMeAJoke(){
     },3000);
     req.addEventListener("load", function(){ // When the server answer --> show the joke!!.
         if (Clicks == callId){ //Is it the last call?
+            console.log("HERE" + Clicks);
             showJoke(req); // This function it's the one that show JOKES. It's used by exercises 6 and 7.
             changeColor("green");
             changeAdvice("JOKE SUCCESS!!");
@@ -63,7 +64,7 @@ function showJoke (reqJSON){
                  console.log(reqParse.value.categories); // categories elements
              */
         var elem = document.createElement("p"); // new element <p>
-        var cont = document.createTextNode(reqParse.value.joke); // new element <p> content
+        var cont = document.createTextNode(reqParse.value["joke"]); // new element <p> content
         elem.appendChild(cont); // insert node cont in node elem <p>
         var where = document.getElementById("hide"); // looking for the section where i will work
         removeAllChildNodes(where); // this function remove all childs of a node, in this case, it will delete all the content
@@ -122,7 +123,6 @@ function prepareAJAXCall(){
         showJoke(req); //Show Joke
     }, function(error) { //Error function to promise
         var first = error[0];
-        console.log ("Oh no!!" + Clicks)
         console.log("!AJAXCall error >> " + error.slice(1));
         changeAdvice("ERROR: " + error.slice(1)); //Show Error
         switch (first) {
@@ -161,7 +161,6 @@ function changeAdvice(txt){
 
 function AJAXCall(config) {
     return new Promise(function (succeed, fail) {
-        config.info;
         var actions = ["GET", "POST", "PUT", "DELETE"];
         var error = "";
         if (actions.indexOf(config.action) == -1) { //Check a bad input
@@ -253,6 +252,88 @@ function repository(src){
     });
 }
 
+function randomWord (){
+    var words = ["love", "peace", "math", "origin", "path", "bootcamp", "mountain", "art", "music", "clouds"];
+    return words[(Math.floor(Math.random() * 10))];
+}
+
+function createRandomMatrix (x, y){
+    var x1 = 0;
+    var y1;
+    var subMatrix = [];
+    var matrix = [];
+    for (x1;x1<x;x1++){
+        for (y1=0;y1<y;y1++){
+            subMatrix[y1]=randomWord();
+        }
+        matrix[x1]=subMatrix.slice();
+    }
+    return matrix;
+}
+
+function isANumber(str) {
+    var num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    var i;
+    if (str.length < 1)
+        return false;
+    for (i = 0; i < str.length; i++) {
+        if (num.indexOf(str[i]) == -1)
+            return false;
+    }
+    return true;
+}
+
+
+function matrixToTable(){
+    var x = (document.getElementById("x1-input").value);
+    var y = (document.getElementById("x2-input").value);
+    var error = "";
+    console.log(typeof(x));
+    if (!(isANumber(x) && isANumber(y))){
+         error = ("X and Y must be an integer Number.");
+    }
+    else {
+        if (x < 1 || y < 1){
+            error = "X and Y must be equal or higher to 1."
+        }
+    }
+    if (error != ""){
+        changeColor("orange");
+        changeAdvice(error);
+        return;
+    }
+    var matrix = createRandomMatrix (x,y);
+    console.log(matrix[0]);
+    console.log(matrix[1]);
+    var where = document.getElementById("hide");
+    where.style.fontSize= "12px"; // Some style for a better watching
+    where.style.fontWeight = "none";
+    removeAllChildNodes(where);
+
+    where = where.appendChild(document.createElement("table"));
+    var root = where;
+    where = where.appendChild(document.createElement("thead").appendChild(document.createElement("tr")));
+
+    var j = 0;
+    for (j;j<(matrix[0].length);j++){
+        where.appendChild(document.createElement("th")).appendChild(document.createTextNode(matrix[0][j]));
+    }
+
+    where = root.appendChild(document.createElement("tbody"));
+    var subRoot = where;
+
+    var i;
+    for (i=1; i<matrix.length;i++){
+        where = subRoot;
+        where = where.appendChild(document.createElement("tr"));
+        for (j=0; j<matrix[i].length;j++){
+            where.appendChild(document.createElement("th")).appendChild(document.createTextNode(matrix[i][j]));
+        }
+    }
+    changeColor("green");
+    changeAdvice("TABLE CREATED");
+}
+
 // Before doing anything, we want the DOMContentLoaded.
 document.addEventListener("DOMContentLoaded", function() {
     /*EX 4 (KEY) - Hello world fade in. The animation is made by CSS.*/
@@ -280,7 +361,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         if (option[3].checked)
                             repository(document.getElementById("ex-input").value);
                         else
-                            matrixToTable(matrix);
+                            matrixToTable();
     });
 
     function whoIsChecked(){
@@ -298,6 +379,8 @@ document.addEventListener("DOMContentLoaded", function() {
             ex[t].addEventListener("click", function(){
                 document.getElementById("opt").innerHTML = "OP: " + whoIsChecked();
                 document.getElementById("ex-input").disabled = !(document.getElementsByName("ex")[3].checked);
+                document.getElementById("x1-input").disabled = !(document.getElementsByName("ex")[4].checked);
+                document.getElementById("x2-input").disabled = !(document.getElementsByName("ex")[4].checked);
             });
         }
 

@@ -162,6 +162,7 @@ section {
 #hide {
     display: none;
     opacity: 0;
+    overflow: scroll;
 
     /* animation */
     -webkit-transition: opacity 4s ease-in;
@@ -203,5 +204,14 @@ aside li:hover{
     width:60px;
 }
 #opt:hover{
-    color:white;
+    color:darkgray;
+}
+
+#x1-input,
+#x2-input{
+    width: 30%;
+}
+
+input {
+    margin: 5px;
 }
