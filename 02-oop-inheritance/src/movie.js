@@ -1,5 +1,21 @@
 "use strict";
 
+class EventEmitter {
+  on() {
+
+  }
+
+  emit() {
+
+  }
+
+  off () {
+
+  }
+}
+
+
+
 class Video {
   constructor(title, year, duration) {
     this._title = title;
@@ -29,16 +45,17 @@ class Video {
   }
 
   play() {
-    return('Play film.')
+    return(`Play film: ${this.title}`)
   }
   pause() {
-    return('Pause film.')
+    return(`Pause film: ${this.title}`)
   }
   resume() {
-    return('Resume film.')
+    return(`Resume film: ${this.title}`)
   }
 }
 
 let PulpFiction = new Video('Pulp Fiction', 1994, 152);
-let Batman = new Video('Batman', 1990, 80);
-console.log(`${PulpFiction.title} - ${PulpFiction.year} - ${PulpFiction.duration}`);
+let Snatch = new Video('Snatch', 2000, 104);
+let BigFish = new Video('Big Fish',2003, 126);
+let TheWall = new Video('The Wall', 1982, 95);
