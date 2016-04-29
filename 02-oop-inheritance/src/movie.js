@@ -1,48 +1,10 @@
 "use strict";
 
-class MyArray extends Array{
-  constructor() {
-    super();
- }
+/* NOTE: i made two different versions of topic2. This was the first version, then i made another similar code, but
+defining a subclass of Array with lots of new methods and functions.*/
 
- deleteElementByIndex (index) {
-  this.splice(index,1);
- }
-
- emptyArray (){
-  let arrayLength = this.length; 
-  while (arrayLength > 0){
-    arrayLength--;
-    this.pop();
-  }
- }
-
- pushArray(array){
-  array.reverse();
-  let arrayLength = array.length; 
-  while(arrayLength > 0) {
-    arrayLength--;
-    this.push(array.pop());
-  }
- }
-
- deleteElementsByValue (value) {
-  let arrayPosition = this.length;
-  let newArray = [];
-  while (arrayPosition>0){
-    arrayPosition--;
-    if (this[arrayPosition] != value)
-      newArray.push(this[arrayPosition]);
-  }
-  this.emptyArray();
-  this.pushArray(newArray.reverse());
- }
-
-}
-
-
-/* eventEmitter supports multiple listeners for one Event. Advice: if you use the off(event) method, you will delete all the 
-listener of the event. */
+/*eventEmitter supports multiple listeners for one Event. Advice: if you use the off(event) method, you will delete all the 
+listener of the event.  */
 class EventEmitter {
   constructor() {
     this.eventHandler = new Array;
@@ -105,7 +67,7 @@ class Actor {
 
 class Movie extends EventEmitter  {
   constructor(title, year, duration) {
-    super(title + year + duration);
+    super();
     this.title = title;
     this.year = year;
     this.duration = duration;
