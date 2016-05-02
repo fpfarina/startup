@@ -182,6 +182,10 @@ var Movie = exports.Movie = function (_EventEmitter) {
 },{"src/classes/EventEmitter.js":2}],5:[function(require,module,exports){
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
 var _Actor = require("src/classes/Actor.js");
 
 var _EventEmitter = require("src/classes/EventEmitter.js");
@@ -212,7 +216,15 @@ var bigFish = Object.assign(new _Movie.Movie('Big Fish', 2003, 126), social);
 var theWall = Object.assign(new _Movie.Movie('The Wall', 1982, 95), social);
 var terminator = Object.assign(new _Movie.Movie('Terminator I', 1985, 60), social);
 
+exports.default = {
+	pulpFiction: pulpFiction,
+	terminator: terminator,
+	bigFish: bigFish,
+	theWall: theWall
+};
+
 /* snatch cast */
+
 var stathham = new _Actor.Actor("Jason Statham", 48);
 var pitt = new _Actor.Actor("Brad Pitt", 52);
 var graham = new _Actor.Actor("Stephen Graham", 42);
@@ -258,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	/* an array with all the movies */
 	var allMovies = [];
 
-	/* add all the movies to the <option> element and the array allMovies */
+	/* this function adds a movie to the <option> element and to the array allMovies */
 	function addMovieToSelect(movie) {
 		var where = document.getElementById("sel_movie");
 		var newFilm = document.createElement("option");
@@ -267,14 +279,14 @@ document.addEventListener("DOMContentLoaded", function () {
 		where.appendChild(newFilm);
 	}
 
-	/*Adding all the movies to the array and the <option> element */
+	/*Adding all the movies to the array and to the <option> element */
 	addMovieToSelect(pulpFiction);
 	addMovieToSelect(snatch);
 	addMovieToSelect(bigFish);
 	addMovieToSelect(theWall);
 	addMovieToSelect(terminator);
 
-	/* checks what film it's selected in the <option> element */
+	/* checks what film it's selected in the <select> element */
 	function whatFilmIsSelectedHTML() {
 		var sel_movie = document.getElementById("sel_movie");
 		for (var index = 0; index < sel_movie.children.length; index++) {
@@ -282,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 
-	/* returns the movie object of the film selected in the <option> element */
+	/* returns the movie object of the film selected in the <select> element */
 	function whatFilmIsSelected() {
 		return allMovies.find(function (x) {
 			return x.title == whatFilmIsSelectedHTML();
@@ -292,15 +304,15 @@ document.addEventListener("DOMContentLoaded", function () {
 	/* Show all the info o a film, in an alert */
 	function showInfo(film) {
 		var cast = film.cast.length;
-		var stringCast = "MOVIE: " + film.title + " \nYEAR: " + film.year + " \nDURATION: " + film.duration + "\nCAST: \n";
+		var stringCast = "MOVIE: " + film.title + " \n\tYEAR: " + film.year + " \n\tDURATION: " + film.duration + "\n\tCAST: \n\t";
 		while (cast > 0) {
 			cast--;
-			stringCast += film.cast[cast].name + " " + film.cast[cast].age + " years old.\n";
+			stringCast += film.cast[cast].name + " " + film.cast[cast].age + " years old.\n\t";
 		}
 		return stringCast;
 	}
 
-	/* Control of the buttons elements */
+	/* Control of the html buttons */
 	var btn_event = document.getElementsByClassName("btn_event");
 	btn_event[0].addEventListener("click", function () {
 		//PLAY
