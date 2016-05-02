@@ -11,9 +11,9 @@ let babelify = require('babelify');
 let watchify = require('watchify');
 
 let compile = function (watch) {
-    var bundler = watchify(browserify('src/index.js', { debug: true })
+    var bundler = watchify(browserify('src/index.js', { debug: true,  standalone: 'default' })
         .transform(babelify, {
-            presets: ['es2015']
+            presets: ['es2015'], plugins: ['add-module-exports']
         }));
 
     function rebundle() {
