@@ -1,0 +1,7 @@
+html * {
+	margin: 5px;
+}
+
+#sel_movie {
+	width: 200px;
+}

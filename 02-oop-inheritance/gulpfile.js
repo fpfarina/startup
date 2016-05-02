@@ -1,90 +1,48 @@
-var gulp = require('gulp')
+'use strict';
 
-var browserify = require('browserify')
-var watchify = require('watchify')
-var babelify = require('babelify')
+process.env.NODE_PATH = __dirname;
 
-var source = require('vinyl-source-stream')
-var buffer = require('vinyl-buffer')
-var merge = require('utils-merge')
+let gulp = require('gulp');
+let sourcemaps = require('gulp-sourcemaps');
+let source = require('vinyl-source-stream');
+let buffer = require('vinyl-buffer');
+let browserify = require('browserify');
+let babelify = require('babelify');
+let watchify = require('watchify');
 
-var rename = require('gulp-rename')
-var uglify = require('gulp-uglify')
-var sourcemaps = require('gulp-sourcemaps')
+let compile = function (watch) {
+    var bundler = watchify(browserify('src/index.js', { debug: true })
+        .transform(babelify, {
+            presets: ['es2015']
+        }));
 
+    function rebundle() {
+        bundler.bundle()
+            .on('error', (err) => {
+                console.error(err);
+                this.emit('end');
+            })
+            .pipe(source('build.js'))
+            .pipe(buffer())
+            .pipe(sourcemaps.init({loadMaps: true}))
+            .pipe(sourcemaps.write('./'))
+            .pipe(gulp.dest('build'));
+    }
 
-/* nicer browserify errors */
-var gutil = require('gulp-util')
-var chalk = require('chalk')
+    if (watch) {
+        bundler.on('update', function() {
+            console.log('-> bundling...');
+            rebundle();
+        });
+    }
 
-gulp.task('default', function() {
+    rebundle();
+};
 
-	function map_error(err) {
-	  if (err.fileName) {
-		// regular error
-		gutil.log(chalk.red(err.name)
-		  + ': '
-		  + chalk.yellow(err.fileName.replace(__dirname + '/src/js/', ''))
-		  + ': '
-		  + 'Line '
-		  + chalk.magenta(err.lineNumber)
-		  + ' & '
-		  + 'Column '
-		  + chalk.magenta(err.columnNumber || err.column)
-		  + ': '
-		  + chalk.blue(err.description))
-	  } else {
-		// browserify error..
-		gutil.log(chalk.red(err.name)
-		  + ': '
-		  + chalk.yellow(err.message))
-	  }
+let watch = function () {
+    return compile(true);
+};
 
-	  this.end()
-	}
-	/* */
-
-	gulp.task('watchify', function () {
-	  var args = merge(watchify.args, { debug: true })
-	  var bundler = watchify(browserify('./src/js/app.js', args)).transform(babelify, { /* opts */ })
-	  bundle_js(bundler)
-
-	  bundler.on('update', function () {
-		bundle_js(bundler)
-	  })
-	})
-
-	function bundle_js(bundler) {
-	  return bundler.bundle()
-		.on('error', map_error)
-		.pipe(source('app.js'))
-		.pipe(buffer())
-		.pipe(gulp.dest('app/dist'))
-		.pipe(rename('app.min.js'))
-		.pipe(sourcemaps.init({ loadMaps: true }))
-		  // capture sourcemaps from transforms
-		  .pipe(uglify())
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('app/dist'))
-	}
-
-	// Without watchify
-	gulp.task('browserify', function () {
-	  var bundler = browserify('./src/js/app.js', { debug: true }).transform(babelify, {/* options */ })
-
-	  return bundle_js(bundler)
-	})
-
-	// Without sourcemaps
-	gulp.task('browserify-production', function () {
-	  var bundler = browserify('./src/js/app.js').transform(babelify, {/* options */ })
-
-	  return bundler.bundle()
-		.on('error', map_error)
-		.pipe(source('app.js'))
-		.pipe(buffer())
-		.pipe(rename('app.min.js'))
-		.pipe(uglify())
-		.pipe(gulp.dest('app/dist'))
-	})
-});
+gulp.task('default', ['watch']);
+gulp.task('build', () => { return compile(); });
+gulp.task('watch', () => { return watch(); })

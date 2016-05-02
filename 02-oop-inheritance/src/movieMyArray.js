@@ -1,8 +1,10 @@
 "use strict";
 
-/* movieMyArray.js it's similar to movie.js. One time i've finished movie.js, i decided to make exercises again 
-using a new MyArray class (subclass of Array) with lots of new methods that improve the code. The logic it's the same,
-the code it's notoriously different. I did this, looking for reusability, better coding and keep learning. */
+/* movieMyArray.js it's another solution i've made for Topic2. One time i've finished, i decided to make whole exercises 
+defining a new MyArray class (subclass of Array) with lots of new methods that improve the code. The logic it's the same,
+the code it's notoriously different. I did this, looking for reusability, better coding and keep learning.
+It was going ok, but after dividing classes in different files and using GULP, MyArray subclass started to crash. So
+it only works using this file (with all the code), but not with classes in different files. */
 
 /* First of all, i defined MyArray class, a subclass of Array. This new class, add some usefull methods and functions.*/
 class MyArray extends Array{
@@ -22,7 +24,7 @@ class MyArray extends Array{
   return this.order(newArray);
  }
 
- /* Deletes an element of the array by its index. */
+ /* Deletes an element of the array by index. */
  deleteElementByIndex (index) {
   this.splice(index,1);
  }
@@ -42,12 +44,12 @@ show () {
   console.log(this);
 }
 
-/* Sort number element of the array */
+/* Increasing sort  */
  order (array) {
   return array.sort(function(a, b){return a-b});
 }
 
-/* Delete all the elements of the array */
+/* Deletes all the elements of the array */
  emptyArray (){
   let arrayLength = this.length; 
   while (arrayLength > 0){
@@ -85,7 +87,7 @@ show () {
  }
 }
 
-/* I used this, to try the new methods in MyArray 
+/* I used this to test the new methods in MyArray class
 let arr = new MyArray;
 arr.show();
 arr.pushArray([1,2,1,2,1,4,8,2,3,1,3,1,9,10,11]);
@@ -197,11 +199,12 @@ let social = {
   }
 }
 
-/* Films, actors, etc.. */
+/* Films, actors, etc....  */
+
 let pulpFiction = Object.assign(new Movie('Pulp Fiction', 1994, 152),social);
-let snatch = Object.assign(new Movie('Pulp Fiction', 1994, 152),social);
-let bigFish = Object.assign(new Movie('Pulp Fiction', 1994, 152),social);
-let theWall = Object.assign(new Movie('Pulp Fiction', 1994, 152),social);
+let snatch = Object.assign(new Movie('Snatch', 2000, 104),social);
+let bigFish = Object.assign(new Movie('Big Fish', 2003, 126),social);
+let theWall = Object.assign(new Movie('The Wall', 1982, 95),social);
 
 let logger = new Logger();
 pulpFiction.on('pause', logger.log);

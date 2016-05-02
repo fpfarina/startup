@@ -3,9 +3,23 @@
 	<head>
 		<title>Topic 2</title>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="index.css">
+		<script type="text/javascript" src="build/build.js" defer></script>
 	</head>
 	<body>
-		Topic 2 - Open your console and watch a film.
-		<script type="text/javascript" src="src/movieMyArray.js"></script>
+		Select a movie and open your console:
+		<form>
+			<select id="sel_movie"></select>
+			<input class="btn_event" id="btn_play" type="button" value="Play"></input>
+			<input class="btn_event" id="btn_pause" type="button" value="Pause"></input>
+			<input class="btn_event" id="btn_resume" type="button" value="Resume"></input>
+			<input class="btn_event" id="btn_cast" type="button" value="INFO"></input>
+			<br>
+			Your name:
+			<input id="name" type="text" value="Mike Blossom"></input>
+			<input class="btn_event" id="btn_like" type="button" value="Like"></input>
+			<input class="btn_event" id="btn_share" type="button" value="Share"></input>
+		</form>
 	</body>
 </html>
+
