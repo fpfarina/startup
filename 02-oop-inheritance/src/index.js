@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	addMovieToSelect(theWall);
 	addMovieToSelect(terminator);
 
-	/* checks what film it's selected in the <option> element */
+	/* checks what film it's selected in the <select> element */
 	function whatFilmIsSelectedHTML(){
 		let sel_movie = document.getElementById("sel_movie");
 		for (let index = 0; index < sel_movie.children.length; index++)
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function(){
 				return sel_movie.childNodes[index].innerHTML;
 	}
 
-	/* returns the movie object of the film selected in the <option> element */
+	/* returns the movie object of the film selected in the <select> element */
 	function whatFilmIsSelected(){
 		return allMovies.find(x => x.title == whatFilmIsSelectedHTML());
 	}
