@@ -1,8 +1,11 @@
-var myApp = angular.module('myApp', ['ngStorage']);
+'use strict';
+
+let myApp = angular.module('myApp', ['ngStorage']);
 
 myApp.controller('MoviesCtrl', function ($scope, $localStorage) {
 
 	$scope.init = {};
+	$scope.init.selectMovie = {"id": 0}
 	$scope.init.movies = [{
 	        "title": "Pulp Fiction",
 	        "year": "1994",
@@ -43,9 +46,9 @@ myApp.controller('MoviesCtrl', function ($scope, $localStorage) {
 	    }];
 
 	$scope.storage = $localStorage.$default(angular.copy($scope.init));
-	$scope.movies = angular.copy($scope.storage.movies);
+	$scope.movies = $scope.storage.movies;
+	$scope.select = $scope.storage.selectMovie.id;
 
-	$scope.select = 0;
 	$scope.selectMovie =  $scope.movies[$scope.select];
 	$scope.menuOption = "Edit movie: "
 
@@ -63,6 +66,7 @@ myApp.controller('MoviesCtrl', function ($scope, $localStorage) {
 
 	$scope.set = function(index){
 			$scope.select = index;
+			$scope.storage.selectMovie.id = index;
 			$scope.selectMovie =  $scope.movies[$scope.select];
 			$scope.menuOption = "Edit Movie: ";
 
@@ -92,17 +96,10 @@ myApp.controller('MoviesCtrl', function ($scope, $localStorage) {
 			$scope.menuOption = "New Movie: "
 		}
 		else
-			if (index == 2){ 
-				if (confirm("Are you sure you wanna save??")) {
-					$scope.saveData();
-				}
-			}
-			else {
-					if (confirm("Are you sure you wanna delete "+ $scope.selectMovie.title + " !! It would be irreversible.")) {
-						$scope.deleteFilm($scope.select);
-						if (!($scope.select == 0))
-							$scope.set($scope.select-1);
-					}
+			if (confirm("Are you sure you wanna delete "+ $scope.selectMovie.title + " !! It would be irreversible.")) {
+				$scope.deleteFilm($scope.select);
+				if (!($scope.select == 0))
+					$scope.set($scope.select-1);
 			}
 	}
 
@@ -119,6 +116,11 @@ myApp.controller('MoviesCtrl', function ($scope, $localStorage) {
 	$scope.newActor = function (){
 		let nActor = {"name": "", "lastName" : "", "age" : ""};
 		$scope.selectMovie.cast.push(nActor);
+	}
+
+	$scope.deleteActor = function (actor){
+		let castArray = $scope.selectMovie.cast
+		castArray = castArray.splice(actor,1);
 	}
 
 });

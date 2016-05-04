@@ -1,8 +1,53 @@
-var myApp = angular.module('myApp', ['ngStorage']);
+'use strict';
 
+let myApp = angular.module('myApp', ['ngStorage']);
+
+myApp.controller('Actor', function($scope){
+	$scope.actor = [{
+		"name" : "",
+		"lastName" : "",
+		"age": "",
+	}]
+});
+
+myApp.controller('Movie', function($scope) {
+	$scope.movie = [{
+		"title" : "",
+		"year" : "",
+		"duration" : "",
+		"cast" : []
+	}]
+});
+
+myApp.controller('MoviesCtrl', function ($scope) {
+
+	$scope.movies = {};
+
+	$scope.getIndexByName = function (name){
+
+	}
+
+	$scope.deleteFilm = function (filmIndex){
+		let filmArray = $scope.movies
+		filmArray = filmArray.splice(film,1);
+	}
+
+	$scope.newFilm = function(){
+		let newFilm = {
+			"title": "",
+	    	"year": "",
+	   		"duration": "",
+	   		"cast" : []
+	   		}
+		$scope.movies.push(newFilm);
+		$scope.set($scope.movies.length-1);
+	}
+});
+/*
 myApp.controller('MoviesCtrl', function ($scope, $localStorage) {
-
+/*
 	$scope.init = {};
+	$scope.init.selectMovie = {"id": 0}
 	$scope.init.movies = [{
 	        "title": "Pulp Fiction",
 	        "year": "1994",
@@ -43,9 +88,9 @@ myApp.controller('MoviesCtrl', function ($scope, $localStorage) {
 	    }];
 
 	$scope.storage = $localStorage.$default(angular.copy($scope.init));
-	$scope.movies = angular.copy($scope.storage.movies);
+	$scope.movies = $scope.storage.movies;
+	$scope.select = $scope.storage.selectMovie.id;
 
-	$scope.select = 0;
 	$scope.selectMovie =  $scope.movies[$scope.select];
 	$scope.menuOption = "Edit movie: "
 
@@ -63,27 +108,10 @@ myApp.controller('MoviesCtrl', function ($scope, $localStorage) {
 
 	$scope.set = function(index){
 			$scope.select = index;
+			$scope.storage.selectMovie.id = index;
 			$scope.selectMovie =  $scope.movies[$scope.select];
 			$scope.menuOption = "Edit Movie: ";
 
-	}
-
-	$scope.newFilm = function(){
-		let newFilm = {
-			"title": "",
-	    	"year": "",
-	   		"duration": "",
-	   		"cast" : []
-	   		}
-		$scope.movies.push(newFilm);
-		$scope.set($scope.movies.length-1);
-	}
-
-	
-
-	$scope.deleteFilm = function (film){
-		let filmArray = $scope.movies
-		filmArray = filmArray.splice(film,1);
 	}
 
 	$scope.setMenu = function(index){
@@ -92,20 +120,12 @@ myApp.controller('MoviesCtrl', function ($scope, $localStorage) {
 			$scope.menuOption = "New Movie: "
 		}
 		else
-			if (index == 2){ 
-				if (confirm("Are you sure you wanna save??")) {
-					$scope.saveData();
-				}
-			}
-			else {
-					if (confirm("Are you sure you wanna delete "+ $scope.selectMovie.title + " !! It would be irreversible.")) {
-						$scope.deleteFilm($scope.select);
-						if (!($scope.select == 0))
-							$scope.set($scope.select-1);
-					}
+			if (confirm("Are you sure you wanna delete "+ $scope.selectMovie.title + " !! It would be irreversible.")) {
+				$scope.deleteFilm($scope.select);
+				if (!($scope.select == 0))
+					$scope.set($scope.select-1);
 			}
 	}
-
 
 
 	$scope.titles = function (){
@@ -121,4 +141,9 @@ myApp.controller('MoviesCtrl', function ($scope, $localStorage) {
 		$scope.selectMovie.cast.push(nActor);
 	}
 
-});
+	$scope.deleteActor = function (actor){
+		let castArray = $scope.selectMovie.cast
+		castArray = castArray.splice(actor,1);
+	}
+*/
+//});

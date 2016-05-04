@@ -5,14 +5,14 @@
 	<title>Topic 3</title>
 	<script src="js/angular.js"></script>
 	<script src="js/ngStorage.js"></script>
-	<script src="js/index.js"></script>
-	<link type="text/css" rel="stylesheet" href="css/index.css">
+	<script src="js/main.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/index-autosave.css">
 </head>
 <body ng-app="myApp">
 	<div class="div-content"  ng-controller="MoviesCtrl">
 		<div class = "left-content">
 			<div class = "div-title">
-				<h1>My movies!! {{ show.title }} </h1>
+				<h1>My movies!!</h1>
 			</div>
 			<div class="div-movies">
 				<ul class="ul-movies" ng-repeat="movie in movies">
@@ -44,10 +44,7 @@
 			<div class="flyng-btn" ng-click="setMenu(1)">
 				<p> Delete Movie (-) </p>
 			</div >
-			<div class="flyng-btn" ng-click="setMenu(2)">
-				<p> SAVE DATA </p>
-			</div>
-			
+		
 			<div class="menu">
 				<p><h2>{{ menuOption + " " + isEmpty(selectMovie.title)}} </h2></p>
 				
@@ -57,12 +54,13 @@
 						<label>Year: <input type="text" ng-model="selectMovie.year"></label><br>
 						<label>Duration: <input type="text" ng-model="selectMovie.duration"></label>
 						<p><strong>Cast:</strong></p>
-						<div ng-repeat="actor in selectMovie.cast" ng-class="{'odd': isOdd($index)}">
+						<div ng-repeat="actor in selectMovie.cast" ng-class="{'odd': isOdd($index)}" class="actorEdit">
 					    		<label>Name: <input type="text" placeholder="Name" ng-model="actor.name"></label><br>
 					    		<label>Last Name: <input type="text" placeholder="LastName" ng-model="actor.lastName"></label><br>
 					    		<label>Age: <input type="text" placeholder="Age" ng-model="actor.age"></label>
+					    		<div ng-click="deleteActor(index)" class="delete"><a>Delete (-)</a></div>
 					    </div>
-					    <div><button ng-click="newActor()">+</button></div>
+					    <div><button class="btnAct" ng-click="newActor()">+ (Add Actor)</button></div>
 					</form>
 				</div>
 
