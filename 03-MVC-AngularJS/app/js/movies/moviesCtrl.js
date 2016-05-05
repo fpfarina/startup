@@ -4,14 +4,16 @@ let moviesCtrl = angular.module('moviesCtrl', []);
 
 moviesCtrl.controller('MoviesCtrl', ['$scope', 'MoviesList', 'MoviesStorage', function($scope, MoviesList, MoviesStorage) {
 
-
     let moviesList = new MoviesList; // First i make my moviesList
+    moviesList = MoviesStorage.data.movies; // Add all the movies to the list.
+
     $scope.movies = moviesList.movies; // movies -> MoviesList.movies
-
-    moviesList.addMoviesJson(MoviesStorage.data.movies); // Add all the movies to the list.
-
     $scope.select = MoviesStorage.data.select.id; // load from localStorage the select id
     $scope.selectedMovie = $scope.movies[$scope.select]; // The selected movie.
+
+    MoviesStorage.data.movies = moviesList.movies;
+    console.log(moviesList);
+
 
     $scope.isEmpty = function(string, optString=""){ // if the string is empty return a '-' char
         if (string == "")

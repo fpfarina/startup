@@ -2,7 +2,7 @@
 
 let appInitSvc = angular.module('appInitSvc', []);
 
-appInitSvc.service('InitMovies', function(){
+appInitSvc.service('InitMovies', ['MoviesList', function (MoviesList){
 
     this.data = {};
     this.data.movies = [{
@@ -46,4 +46,4 @@ appInitSvc.service('InitMovies', function(){
 
     this.data.select = {};
     this.data.select.id = 0;
-});
+}]);
