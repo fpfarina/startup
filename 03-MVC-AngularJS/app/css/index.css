@@ -1,6 +1,6 @@
 * {
-	margin:0px;
-	padding:0px;
+	margin:0;
+	padding:0;
 	box-sizing: border-box;
 	font-family: 'Verdana';
 	font-size: 12px;
@@ -17,6 +17,13 @@ ul {
 	list-style: none;
 }
 
+.div-movies h1{
+    color:lightgray;}
+
+.div-movies {
+    text-align: center;
+}
+
 .div-movie-data, 
 .div-movies {
 	padding:10px;
@@ -30,12 +37,12 @@ ul {
 .left-content > div {
 	background-color: White;
 	margin: 15px auto;
-	-webkit-box-shadow: 2px 2px 1px 0px rgba(50,50,50,0.75);
+	-webkit-box-shadow: 2px 2px 1px 0 rgba(50,50,50,0.75);
 }
 
 .right-content > div {
 	background-color: White;
-	-webkit-box-shadow: 2px 2px 1px 0px rgba(50,50,50,0.75);
+	-webkit-box-shadow: 2px 2px 1px 0 rgba(50,50,50,0.75);
 }
 
 .left-content > div {
@@ -88,10 +95,7 @@ ul {
 	text-align: center;
 	font-size: 50px;
 	padding: 10px;
-	
 }
-
-
 
 .flyng-btn {
 	text-align:center;
@@ -116,7 +120,6 @@ ul {
 		background-color: lightgray;
 }
 
-}
 .active > p {
 	color:blue;
 }
@@ -132,6 +135,7 @@ ul {
 	margin-left:10px;
 	margin-right:10px;
 	margin-bottom:10px;
+    width: 50%;
 }
 
 .menu p {
@@ -160,4 +164,8 @@ ul {
 .btnAct {
 	margin:5px;
 	padding: 5px;
+}
+
+.noFilms input {
+	enabled: true;
 }

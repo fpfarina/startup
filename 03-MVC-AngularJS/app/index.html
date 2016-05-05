@@ -25,6 +25,7 @@
 				<h1>My movies!!</h1>
 			</div>
 			<div class="div-movies">
+				<h1 ng-show="noMovies">No Movies</h1>
 				<ul class="ul-movies" ng-repeat="movie in movies">
 					<li ng-click="set($index)" ng-class="{'active': select == $index}">
 						<p><strong>{{ isEmpty(movie.title) }}</strong></p>
@@ -48,21 +49,21 @@
 			</div>
 		</div>
 		<div class="right-content">
-			<div class="flyng-btn" ng-click="setMenu(0)">
+			<div class="flyng-btn" ng-click="buttonsHandler(0)">
 				<p> New movie (+)</p>
 			</div >
-			<div class="flyng-btn" ng-click="setMenu(1)">
+			<div class="flyng-btn" ng-click="buttonsHandler(1)">
 				<p> Delete Movie (-) </p>
 			</div >
 		
 			<div class="menu">
-				<p><h2>{{ menuOption + " " + isEmpty(selectedMovie.title)}} </h2></p>
+				<p><strong>{{ menuOption + " " }}</strong> {{isEmpty(selectedMovie.title)}} </p>
 				
 				<div id="form1">
 					<form>
-						<label>Title: <input type="text" ng-model="selectedMovie.title"></label><br>
-						<label>Year: <input type="text" ng-model="selectedMovie.year"></label><br>
-						<label>Duration: <input type="text" ng-model="selectedMovie.duration"></label>
+						<label>Title: <input type="text" ng-model="selectedMovie.title" ng-disabled="noMovies"></label><br>
+						<label>Year: <input type="text" ng-model="selectedMovie.year" ng-disabled="noMovies"></label><br>
+						<label>Duration: <input type="text" ng-model="selectedMovie.duration" ng-disabled="noMovies"></label>
 						<p><strong>Cast:</strong></p>
 						<div ng-repeat="actor in selectedMovie.cast" ng-class="{'odd': isOdd($index)}" class="actorEdit">
 					    		<label>Name: <input type="text" placeholder="Name" ng-model="actor.name"></label><br>
@@ -70,7 +71,7 @@
 					    		<label>Age: <input type="text" placeholder="Age" ng-model="actor.age"></label>
 					    		<div ng-click="deleteActor(index)" class="delete"><a>Delete (-)</a></div>
 					    </div>
-					    <div><button class="btnAct" ng-click="newActor()">+ (Add Actor)</button></div>
+					    <div><button class="btnAct" ng-click="newActor()" ng-disabled="noMovies">+ (Add Actor)</button></div>
 					</form>
 				</div>
 
