@@ -3,8 +3,9 @@
 let moviesStorageSvc = angular.module('moviesStorageSvc', []);
 
 moviesStorageSvc.service('MoviesStorage', function() {
-
-    this.movies = [];
-    this.selectMovie = 0;
-
-}) ;
+    this.data = {};
+    this.data.movies = [];
+    
+    this.data.select = {};
+    this.data.select.id = 0;
+ }) ;

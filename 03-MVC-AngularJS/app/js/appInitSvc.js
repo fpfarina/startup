@@ -4,7 +4,8 @@ let appInitSvc = angular.module('appInitSvc', []);
 
 appInitSvc.service('InitMovies', function(){
 
-    this.movies = [{
+    this.data = {};
+    this.data.movies = [{
         "title": "Pulp Fiction",
         "year": "1994",
         "duration": "152",
@@ -43,6 +44,6 @@ appInitSvc.service('InitMovies', function(){
         "cast": []
     }];
 
-    this.selectMovie = 0;
-
+    this.data.select = {};
+    this.data.select.id = 0;
 });

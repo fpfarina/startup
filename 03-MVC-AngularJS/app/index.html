@@ -12,20 +12,21 @@
     <script src="js/appInitSvc.js"></script>
     <script src="js/localStorage/localStorageCtrl.js"></script>
     <script src="js/localStorage/moviesStorageSvc.js"></script>
+	<script src="js/movies/moviesCtrl.js"></script>
     <!-- end of remember -->
 	<script src="js/main.js"></script>
 	<link type="text/css" rel="stylesheet" href="css/index.css">
 </head>
+
 <body ng-app="myApp" ng-controller="LocalStorageCtrl">
 	<div class="div-content"  ng-controller="MoviesCtrl">
 		<div class = "left-content">
 			<div class = "div-title">
-				<button ng-click="init()">CLICK</button>
 				<h1>My movies!!</h1>
 			</div>
 			<div class="div-movies">
 				<ul class="ul-movies" ng-repeat="movie in movies">
-					<li ng-click="set($index)" ng-class="{'active':select == $index}">
+					<li ng-click="set($index)" ng-class="{'active': select == $index}">
 						<p><strong>{{ isEmpty(movie.title) }}</strong></p>
 					</li>
 				</ul>
@@ -33,12 +34,12 @@
 			<div class="div-movie-data">
 				<ul class="ul-movies-data" >
 					<li>
-					    <p><strong>Title:</strong> {{ isEmpty(selectMovie.title) }}</p>
-					    <p><strong>Year:</strong> {{ isEmpty(selectMovie.year) }}</p>
-					    <p><strong>Duration:</strong> {{ isEmpty(selectMovie.duration) }}</p><br>
+					    <p><strong>Title:</strong> {{ isEmpty(selectedMovie.title) }}</p>
+					    <p><strong>Year:</strong> {{ isEmpty(selectedMovie.year) }}</p>
+					    <p><strong>Duration:</strong> {{ isEmpty(selectedMovie.duration) }}</p><br>
 					    <p><strong>Cast:</strong> </p>
 					    <ul class="ul-actor">
-					    	<li ng-repeat="actor in selectMovie.cast">
+					    	<li ng-repeat="actor in selectedMovie.cast">
 					    		<p><strong>{{ isEmpty(actor.name + " " + actor.lastName) }}</strong> ({{ isEmpty(actor.age, " yrs old") }})</p>
 					    	</li>
 					   	</ul>
@@ -55,15 +56,15 @@
 			</div >
 		
 			<div class="menu">
-				<p><h2>{{ menuOption + " " + isEmpty(selectMovie.title)}} </h2></p>
+				<p><h2>{{ menuOption + " " + isEmpty(selectedMovie.title)}} </h2></p>
 				
 				<div id="form1">
 					<form>
-						<label>Title: <input type="text" ng-model="selectMovie.title"></label><br>
-						<label>Year: <input type="text" ng-model="selectMovie.year"></label><br>
-						<label>Duration: <input type="text" ng-model="selectMovie.duration"></label>
+						<label>Title: <input type="text" ng-model="selectedMovie.title"></label><br>
+						<label>Year: <input type="text" ng-model="selectedMovie.year"></label><br>
+						<label>Duration: <input type="text" ng-model="selectedMovie.duration"></label>
 						<p><strong>Cast:</strong></p>
-						<div ng-repeat="actor in selectMovie.cast" ng-class="{'odd': isOdd($index)}" class="actorEdit">
+						<div ng-repeat="actor in selectedMovie.cast" ng-class="{'odd': isOdd($index)}" class="actorEdit">
 					    		<label>Name: <input type="text" placeholder="Name" ng-model="actor.name"></label><br>
 					    		<label>Last Name: <input type="text" placeholder="LastName" ng-model="actor.lastName"></label><br>
 					    		<label>Age: <input type="text" placeholder="Age" ng-model="actor.age"></label>
