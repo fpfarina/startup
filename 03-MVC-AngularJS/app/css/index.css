@@ -14,6 +14,7 @@ body {
 ul {
 	padding-top:5px
 	padding-bottom:5px;
+	list-style: none;
 }
 
 .div-movie-data, 
@@ -90,16 +91,11 @@ ul {
 	
 }
 
-.active{
-		background-color: lightgray;
-}
-.active > p {
-	color:blue;
-}
+
 
 .flyng-btn {
 	text-align:center;
-	width: 31%;
+	width: 46%;
 	display:inline-block;
 	margin: 15px 5px;
 	padding: 30px;
@@ -114,6 +110,15 @@ ul {
 .flyng-btn:active {
 	background-color: lightblue;
 	-webkit-box-shadow: 1px 1px 1px 0px rgba(50,50,50,0.75);
+}
+
+.active{
+		background-color: lightgray;
+}
+
+}
+.active > p {
+	color:blue;
 }
 
 .menu {
@@ -134,6 +139,25 @@ ul {
 	margin-bottom:10px;
 }
 
+.actorEdit {
+	padding:8px;
+}
+
+.delete {
+	cursor:pointer;
+	text-align:right;
+	width:100%;
+}
+
+.delete:hover {
+	color:red;
+}
+
 .odd {
 	background:lavender;
+}
+
+.btnAct {
+	margin:5px;
+	padding: 5px;
 }

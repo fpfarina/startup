@@ -2250,7 +2250,7 @@ function setupModuleLoader(window) {
            * @name angular.Module#directive
            * @module ng
            * @param {string|Object} name Directive name, or an object map of directives where the
-           *    keys are the names and the values are the factories.
+           *    keys are the names and the values are the movies.
            * @param {Function} directiveFactory Factory function for creating new instance of
            * directives.
            * @description
@@ -7544,7 +7544,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    *
    * @param {string|Object} name Name of the directive in camel-case (i.e. <code>ngBind</code> which
    *    will match as <code>ng-bind</code>), or an object map of directives where the keys are the
-   *    names and the values are the factories.
+   *    names and the values are the movies.
    * @param {Function|Array} directiveFactory An injectable directive factory function. See the
    *    {@link guide/directive directive guide} and the {@link $compile compile API} for more info.
    * @returns {ng.$compileProvider} Self for chaining.
@@ -19501,7 +19501,7 @@ function $FilterProvider($provide) {
    * @ngdoc method
    * @name $filterProvider#register
    * @param {string|Object} name Name of the filter function, or an object map of filters where
-   *    the keys are the filter names and the values are the filter factories.
+   *    the keys are the filter names and the values are the filter movies.
    *
    *    <div class="alert alert-warning">
    *    **Note:** Filter names must be valid angular {@link expression} identifiers, such as `uppercase` or `orderBy`.

@@ -1,9 +1,9 @@
 'use strict';
 
-let moviesList = angular.module('moviesList', ['movie']);
+let moviesListFctr = angular.module('moviesListFctr', ['movieFctr']);
 
 /* Factory of MoviesList */
-moviesList.factory('MoviesList', ['Movie', function(Movie) {
+moviesListFctr.factory('MoviesList', ['Movie', function(Movie) {
 
     return function() {
         this.movies = [];

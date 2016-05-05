@@ -1,9 +1,9 @@
 'use strict';
 
-let movie = angular.module('movie', ['actor']);
+let movieFctr = angular.module('movie', ['actorFctr']);
 
 /* Factory of Movie */
-movie.factory('Movie', ['Actor', function(Actor) {
+movieFctr.factory('Movie', ['Actor', function(Actor) {
 
     return function(title,year,duration) {
         this.title = title;
