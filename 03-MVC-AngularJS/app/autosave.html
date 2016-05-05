@@ -5,13 +5,19 @@
 	<title>Topic 3</title>
 	<script src="js/angular.js"></script>
 	<script src="js/ngStorage.js"></script>
+    <!-- Remeber to use gulp here -->
+    <script src="js/factories/actor.js"></script>
+    <script src="js/factories/movie.js"></script>
+    <script src="js/factories/moviesList.js"></script>
+    <!-- end of remember -->
 	<script src="js/main.js"></script>
 	<link type="text/css" rel="stylesheet" href="css/index-autosave.css">
 </head>
-<body ng-app="myApp">
+<body ng-app="myApp" ng-controller="LocalStorageCtrl">
 	<div class="div-content"  ng-controller="MoviesCtrl">
 		<div class = "left-content">
 			<div class = "div-title">
+				<button ng-click="init()">CLICK</button>
 				<h1>My movies!!</h1>
 			</div>
 			<div class="div-movies">
