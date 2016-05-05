@@ -21,12 +21,11 @@ movieFctr.factory('Movie', ['Actor', function(Actor) {
         };
 
         this.addCastJson = function (json) {
-            let indexCast = json.length;
+            let indexCast = 0;
             let name = "";
             let lastName = "";
             let age = "";
-            while (indexCast > 0) {
-                indexCast--;
+            for (indexCast; indexCast < json.length; indexCast++) {
                 name = json[indexCast].name;
                 lastName = json[indexCast].lastName;
                 age = json[indexCast].age;
