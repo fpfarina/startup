@@ -1,9 +1,9 @@
 'use strict';
 
-let actor = angular.module('actor', []);
+let actorFctr = angular.module('actorFctr', []);
 
 /* Factory of Actor */
-actor.factory('Actor', function(){
+actorFctr.factory('Actor', function(){
     return function(name, lastName, age) {
         this.name = name;
         this.lastName = lastName;
