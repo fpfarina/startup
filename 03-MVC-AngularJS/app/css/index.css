@@ -1,7 +1,6 @@
 /* Font and height */
 html {
-    color: black;
-    font-size: 12px;
+    font-size: 14px;
     font-family: 'Verdana', serif;
 }
 
@@ -37,6 +36,12 @@ p {
     margin: 0;
 }
 
+/* Body box */
+.div-content {
+    width: 97%;
+    margin: 0 auto;
+}
+
 /* Defining h1, h2, h3*/
 
 h1 {
@@ -51,18 +56,7 @@ h3 {
     font-size: 15px;
 }
 
-/* Body box */
-.div-content {
-    width: 97%;
-    margin: 0 auto;
-}
 
-/* Bars */
-.left-content,
-.right-content {
-    width: 50%;
-    float: left;
-}
 
 .div-movies {
     text-align: center;
@@ -86,7 +80,7 @@ h3 {
 .div-movies,
 .div-movies-data,
 .menu {
-    width: 96%;
+    width: 100%;
 }
 
 /* Movies - List */
@@ -97,7 +91,7 @@ h3 {
 }
 
 .div-movies > ul > li {
-    padding: 5px;
+    padding: 20px;
     width: 100%;
 }
 
@@ -143,7 +137,7 @@ h3 {
 .flying-btn {
     float: left;
     margin: 10px auto;
-    width: 50%;
+    width: 49%;
 	cursor: pointer;
 }
 
@@ -151,7 +145,7 @@ h3 {
     -webkit-box-shadow: 2px 2px 1px 0 rgba(50,50,50,0.75);
     text-align:center;
     padding: 30px 10px;
-    width: 92%;
+    width: 96%;
     background-color: White;
 }
 
@@ -230,4 +224,44 @@ h3 {
 
 .noFilms input {
     enabled: true;
+}
+
+@media (min-width: 640px) {
+    html {
+        font-size: 12px;
+    }
+    .flying-btn {
+        float: left;
+        margin: 10px auto;
+        width: 50%;
+        cursor: pointer;
+    }
+
+    .left-content,
+    .right-content {
+        width: 50%;
+        float: left;
+    }
+
+    .flying-btn > div {
+        width: 92%;
+    }
+
+    .div-movies > ul > li {
+        padding: 5px;
+        width: 100%;
+    }
+
+    .div-title,
+    .div-movies,
+    .div-movies-data,
+    .menu {
+        width: 96%;
+    }
+}
+
+@media (min-width: 1024px) {
+    html {
+        font-size: 14px;
+    }
 }
