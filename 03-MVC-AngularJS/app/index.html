@@ -3,80 +3,24 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Topic 3</title>
-	<script src="js/dependencies/angular.js"></script>
-	<script src="js/dependencies/ngStorage.js"></script>
+	<script src="modules/dependencies/angular.js"></script>
+	<script src="modules/dependencies/angular-ui-router.js"></script>
+	<script src="modules/dependencies/ngStorage.js"></script>
     <!-- Remeber to use gulp here -->
-    <script src="js/movies/actorFactory.js"></script>
-    <script src="js/movies/movieFactory.js"></script>
-    <script src="js/movies/moviesListFactory.js"></script>
-    <script src="js/initService.js"></script>
-    <script src="js/localStorage/localStorageController.js"></script>
-    <script src="js/localStorage/moviesStorageService.js"></script>
-	<script src="js/movies/moviesController.js"></script>
+    <script src="modules/movies/actorFactory.js"></script>
+    <script src="modules/movies/movieFactory.js"></script>
+    <script src="modules/movies/moviesListFactory.js"></script>
+    <script src="modules/initService.js"></script>
+    <script src="modules/localStorage/localStorageController.js"></script>
+    <script src="modules/localStorage/moviesStorageService.js"></script>
+	<script src="modules/movies/moviesController.js"></script>
     <!-- end of remember -->
-	<script src="js/main.js"></script>
+	<script src="modules/main.js"></script>
 	<link type="text/css" rel="stylesheet" href="css/index.css">
 </head>
 
 <body ng-app="myApp" ng-controller="LocalStorageCtrl">
-	<div class="div-content"  ng-controller="MoviesCtrl">
-		<div class = "left-content">
-			<div class = "div-title">
-				<h1>My movies!!</h1>
-			</div>
-			<div class="div-movies">
-				<h1 ng-show="noMovies">No Movies</h1>
-				<ul class="ul-movies" ng-repeat="movie in movies">
-					<li ng-click="set($index)" ng-class="{'active': select == $index}">
-						<p><strong>{{ isEmpty(movie.title) }}</strong></p>
-					</li>
-				</ul>
-			</div>
-			<div class="div-movie-data">
-				<ul class="ul-movies-data" >
-					<li>
-					    <p><strong>Title:</strong> {{ isEmpty(selectedMovie.title) }}</p>
-					    <p><strong>Year:</strong> {{ isEmpty(selectedMovie.year) }}</p>
-					    <p><strong>Duration:</strong> {{ isEmpty(selectedMovie.duration) }}</p><br>
-					    <p><strong>Cast:</strong> </p>
-					    <ul class="ul-actor">
-					    	<li ng-repeat="actor in selectedMovie.cast">
-					    		<p><strong>{{ isEmpty(actor.name + " " + actor.lastName) }}</strong> ({{ isEmpty(actor.age, " yrs old") }})</p>
-					    	</li>
-					   	</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="right-content">
-			<div class="flyng-btn" ng-click="buttonsHandler(0)">
-				<p> New movie (+)</p>
-			</div >
-			<div class="flyng-btn" ng-click="buttonsHandler(1)">
-				<p> Delete Movie (-) </p>
-			</div >
-		
-			<div class="menu">
-				<p><strong>{{ menuOption + " " }}</strong> {{isEmpty(selectedMovie.title)}} </p>
-				
-				<div id="form1">
-					<form>
-						<label>Title: <input type="text" ng-model="selectedMovie.title" ng-disabled="noMovies"></label><br>
-						<label>Year: <input type="text" ng-model="selectedMovie.year" ng-disabled="noMovies"></label><br>
-						<label>Duration: <input type="text" ng-model="selectedMovie.duration" ng-disabled="noMovies"></label>
-						<p><strong>Cast:</strong></p>
-						<div ng-repeat="actor in selectedMovie.cast" ng-class="{'odd': isOdd($index)}" class="actorEdit">
-					    		<label>Name: <input type="text" placeholder="Name" ng-model="actor.name"></label><br>
-					    		<label>Last Name: <input type="text" placeholder="LastName" ng-model="actor.lastName"></label><br>
-					    		<label>Age: <input type="text" placeholder="Age" ng-model="actor.age"></label>
-					    		<div ng-click="deleteActor(index)" class="delete"><a>Delete (-)</a></div>
-					    </div>
-					    <div><button class="btnAct" ng-click="newActor()" ng-disabled="noMovies">+ (Add Actor)</button></div>
-					</form>
-				</div>
-
-			</div>
-		</div>
-	</div>
+    <div>Asd</div>
+    <div ui-view></div>
 </body>
 </html>

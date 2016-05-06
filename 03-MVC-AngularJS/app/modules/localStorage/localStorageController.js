@@ -6,7 +6,7 @@ localStorageCtrl.controller('LocalStorageCtrl', ['$scope', '$localStorage', 'Mov
 
 
 
-    $scope.storage = $localStorage.$default(InitMovies); //InitMovies -> put some initial MOVIES in localStorage
+    $scope.storage = $localStorage.$reset(InitMovies); //InitMovies -> put some initial MOVIES in localStorage
 
     console.log($scope.storage.data.movies);
     let movies = new MoviesList;
