@@ -15,7 +15,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('moviesList', {
             url: "/moviesList",
-            templateUrl: "../modules/partials/moviesList.html"
+            templateUrl: "modules/partials/moviesList.html"
 
         })
 });
