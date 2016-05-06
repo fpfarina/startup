@@ -1,6 +1,6 @@
 /* Font and height */
 html {
-    font-size: 14px;
+    font-size: 15px;
     font-family: 'Verdana', serif;
 }
 
@@ -47,7 +47,7 @@ p {
 h1 {
     text-align: center;
     font-size: 50px;
-    padding: 10px 0;
+    padding: 20px 0;
 }
 h2 {
     font-size: 25px;
@@ -55,7 +55,6 @@ h2 {
 h3 {
     font-size: 15px;
 }
-
 
 
 .div-movies {
@@ -166,7 +165,7 @@ h3 {
 }
 
 .menu p {
-    font-size: 15px;
+    font-size: 20px;
     width: 100%;
     padding-top: 5px;
     padding-left: 5px;
@@ -257,6 +256,14 @@ h3 {
     .div-movies-data,
     .menu {
         width: 96%;
+    }
+
+    .menu p {
+        font-size: 15px;
+        width: 100%;
+        padding-top: 5px;
+        padding-left: 5px;
+        text-align: left;
     }
 }
 
