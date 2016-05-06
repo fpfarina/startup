@@ -61,9 +61,15 @@ moviesCtrl.controller('MoviesCtrl', ['$scope', 'MoviesList', 'MoviesStorage', fu
             newMovie();
             $scope.menuOption = "New movie: "
         }
-        else
-            if (confirm("Are you sure you want to delete ''"+ $scope.selectedMovie.title + "'' ? It would be irreversible."))
-                deleteMovie($scope.select);
+        else {
+            if (indexBtn == 1){
+                if (confirm("Are you sure you want to delete ''"+ $scope.selectedMovie.title + "'' ? It would be irreversible."))
+                    deleteMovie($scope.select);
+            }
+            else {
+                $scope.menuOption = "Edit movie: ";
+            }
+        }
     };
 
     $scope.newActor = function (){

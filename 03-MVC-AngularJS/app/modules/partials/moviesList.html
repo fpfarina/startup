@@ -36,56 +36,32 @@
                     </li>
                 </ul>
             </div>
-        </div>
 
-        <!-- Edit menu -->
-        <div class="right-content">
+            <!-- Buttons -->
             <div class="flying-btn">
-                <div ng-click="buttonsHandler(0)">
-                    <p> New movie (+)</p>
-                </div>
+                <a ui-sref=".edit">
+                    <div ng-click="buttonsHandler(0)">
+                        <p> New movie (+)</p>
+                    </div>
+                </a>
             </div >
             <div class="flying-btn">
                 <div ng-click="buttonsHandler(1)">
                     <p> Delete Movie (-) </p>
                 </div>
             </div >
+            <div class="flying-btn">
+                <a ui-sref=".edit" ng-click="buttonsHandler(2)">
+                    <div>
+                        <p> Edit Movie (*) </p>
+                    </div>
+                </a>
+            </div >
+        </div>
 
-            <div class="menu">
-                <div>
-                    <form>
-                        <p><strong>{{ menuOption + " " }}</strong> {{isEmpty(selectedMovie.title)}}</p>
-                        <table>
-                            <tr>
-                                <td><label for="in1">Title:</label></td>
-                                <td><input id="in1" type="text" ng-model="selectedMovie.title" ng-disabled="noMovies"></td>
-                            </tr>
-                            <tr>
-                                <td><label for="in2">Year:</label></td>
-                                <td><input id="in2" type="text" ng-model="selectedMovie.year" ng-disabled="noMovies"></td>
-                            </tr>
-                            <tr>
-                                <td><label for="in3">Duration:</label></td>
-                                <td><input id="in3" type="text" ng-model="selectedMovie.duration" ng-disabled="noMovies"></td>
-                            </tr>
-                        </table>
-                        <p><strong>Cast:</strong></p>
-                        <div ng-repeat="actor in selectedMovie.cast" ng-class="{'odd': isOdd($index)}" class="actorEdit">
-                            <form>
-                                <label>Name: </label>
-                                <input type="text" placeholder="Name" ng-model="actor.name">
-                                <label>Last Name: </label>
-                                <input type="text" placeholder="LastName" ng-model="actor.lastName">
-                                <label>Age: </label>
-                                <input type="text" placeholder="Age" ng-model="actor.age">
-                                <div ng-click="deleteActor(index)" class="delete"><a>Delete (-)</a></div>
-                            </form>
-                        </div>
-                        <div><button class="btnAct" ng-click="newActor()" ng-disabled="noMovies">+ (Add Actor)</button></div>
-                    </form>
-                </div>
-
-            </div>
+        <!-- Edit menu -->
+        <div class="right-content">
+            <div ui-view></div>
         </div>
     </div>
 </div>

@@ -34,6 +34,8 @@ p {
     list-style: none;
     padding: 0;
     margin: 0;
+    color: black;
+    text-decoration: none;
 }
 
 /* Body box */
@@ -135,25 +137,25 @@ h3 {
 
 .flying-btn {
     float: left;
-    margin: 10px auto;
-    width: 49%;
+    margin: 5px auto;
+    width: 100%;
 	cursor: pointer;
 }
 
-.flying-btn > div {
+.flying-btn div {
     -webkit-box-shadow: 2px 2px 1px 0 rgba(50,50,50,0.75);
     text-align:center;
     padding: 30px 10px;
-    width: 96%;
+    width: 100%;
     background-color: White;
 }
 
-.flying-btn > div:hover {
+.flying-btn div:hover {
 	background-color: lavender;
 	-webkit-box-shadow: 4px 4px 4px 0 rgba(50,50,50,0.75);
 }
 
-.flying-btn > div:active {
+.flying-btn div:active {
 	background-color: lightblue;
 	-webkit-box-shadow: 1px 1px 1px 0 rgba(50,50,50,0.75);
 }
@@ -225,6 +227,21 @@ h3 {
     enabled: true;
 }
 
+.close > span {
+    text-align:right;
+    float:right;
+    border: solid 1px darkgray;
+    color: gray;
+    padding: 2px 5px 4px 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.close > span:hover {
+    color: gray;
+    background-color: lavender;
+}
+
 @media (min-width: 640px) {
     html {
         font-size: 12px;
@@ -232,7 +249,7 @@ h3 {
     .flying-btn {
         float: left;
         margin: 10px auto;
-        width: 50%;
+        width: 33%;
         cursor: pointer;
     }
 
@@ -242,11 +259,11 @@ h3 {
         float: left;
     }
 
-    .flying-btn > div {
-        width: 92%;
+    .flying-btn div {
+        width: 91%;
     }
 
-    .div-movies > ul > li {
+    .div-movies ul > li {
         padding: 5px;
         width: 100%;
     }

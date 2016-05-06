@@ -18,4 +18,9 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: "modules/partials/moviesList.html"
 
         })
+
+        .state('moviesList.edit', {
+            url: "/edit",
+            templateUrl: "modules/partials/moviesListEdition.html"
+        })
 });
