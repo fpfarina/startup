@@ -70,6 +70,9 @@ moviesCtrl.controller('MoviesCtrl', ['$scope', '$state', 'MoviesList', 'MoviesSt
      * Add a new actor to the cast list */
     $scope.newActor = function (){
         $scope.selectedMovie.addActor("","","");
+        setTimeout(function() {
+            gotoNewActor();
+        });
     };
 
     /* $scope.deleteActor (indexActor)
@@ -94,6 +97,13 @@ moviesCtrl.controller('MoviesCtrl', ['$scope', '$state', 'MoviesList', 'MoviesSt
             document.getElementById('edit').scrollIntoView();
             document.getElementById("in1").focus();
         }, 1);
+    };
+
+    /* gotoNewActor()
+     * When you add a new actor, this function jump to the new actor edit form. It's useful in phones. */
+    let gotoNewActor = function () {
+        let actors = document.getElementsByClassName('actorEdit');
+        actors[actors.length - 1].scrollIntoView();
     };
 
     /* $scope.buttonsHandler
