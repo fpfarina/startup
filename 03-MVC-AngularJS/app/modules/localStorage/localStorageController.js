@@ -2,9 +2,8 @@
 
 let localStorageCtrl = angular.module('localStorageCtrl', ['appInitSvc', 'moviesListFctr']);
 
+/* Local data controller -> save and load data*/
 localStorageCtrl.controller('LocalStorageCtrl', ['$scope', '$localStorage', 'MoviesStorage', 'InitMovies', 'MoviesList', function($scope, $localStorage, MoviesStorage, InitMovies, MoviesList){
-
-
 
     $scope.storage = $localStorage.$default(InitMovies); //InitMovies -> put some initial MOVIES in localStorage
 

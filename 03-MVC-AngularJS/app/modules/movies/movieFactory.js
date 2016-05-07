@@ -2,7 +2,7 @@
 
 let movieFctr = angular.module('movieFctr', ['actorFctr']);
 
-/* Factory of Movie */
+/* Factory of Movies */
 movieFctr.factory('Movie', ['Actor', function(Actor) {
 
     return function(title,year,duration) {

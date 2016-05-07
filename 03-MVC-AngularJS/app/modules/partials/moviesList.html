@@ -39,7 +39,7 @@
 
             <!-- Buttons -->
             <div class="flying-btn">
-                <a ui-sref=".edit">
+                <a>
                     <div ng-click="buttonsHandler(0)">
                         <p> New movie (+)</p>
                     </div>
@@ -51,7 +51,7 @@
                 </div>
             </div >
             <div class="flying-btn">
-                <a ui-sref=".edit" ng-click="buttonsHandler(2)">
+                <a ng-click="buttonsHandler(2)"> <!-- ui-sref=".edit"  -->
                     <div>
                         <p> Edit Movie (*) </p>
                     </div>
@@ -62,6 +62,7 @@
         <!-- Edit menu -->
         <div class="right-content">
             <div ui-view></div>
-        </div>
+       </div>
+
     </div>
 </div>

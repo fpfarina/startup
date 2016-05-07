@@ -4,6 +4,7 @@ let appInitSvc = angular.module('appInitSvc', []);
 
 appInitSvc.service('InitMovies', ['MoviesList', function (MoviesList){
 
+    /* The services provides some movies, the first time the app it's open */
     this.data = {};
     this.data.movies = [{
         "title": "Pulp Fiction",

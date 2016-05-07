@@ -2,7 +2,7 @@
 
 let actorFctr = angular.module('actorFctr', []);
 
-/* Factory of Actor */
+/* Factory of Actors */
 actorFctr.factory('Actor', function(){
     return function(name, lastName, age) {
         this.name = name;
