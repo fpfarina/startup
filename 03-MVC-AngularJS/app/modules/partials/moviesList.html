@@ -1,0 +1,68 @@
+<div ng-controller="LocalStorageCtrl">
+    <div class="div-content"  ng-controller="MoviesCtrl">
+        <!-- Movie list with info -->
+        <div class = "left-content">
+            <div class="div-title">
+                <h1>My movies!!</h1>
+            </div>
+            <div class="div-movies">
+                <h2 ng-show="noMovies">No Movies</h2>
+                <ul ng-repeat="movie in movies">
+                    <li ng-click="set($index)" ng-class="{'active': select == $index}">
+                        <p><strong>{{ isEmpty(movie.title) }}</strong></p>
+                    </li>
+                </ul>
+            </div>
+            <div class="div-movies-data">
+                <ul>
+                    <li>
+                        <strong>Title:</strong> {{ isEmpty(selectedMovie.title) }}
+                    </li>
+                    <li>
+                        <strong>Year:</strong> {{ isEmpty(selectedMovie.year) }}
+                    </li>
+                    <li>
+                        <strong>Duration:</strong> {{ isEmpty(selectedMovie.duration) }}
+                    </li>
+                    <li>
+                        <strong>Cast:</strong>
+                    </li>
+                    <li>
+                        <ul>
+                            <li ng-repeat="actor in selectedMovie.cast">
+                                <strong>{{ isEmpty(actor.name + " " + actor.lastName) }}</strong> ({{ isEmpty(actor.age, " yrs old") }})
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flying-btn">
+                <a>
+                    <div ng-click="buttonsHandler(0)">
+                        <p> New movie (+)</p>
+                    </div>
+                </a>
+            </div >
+            <div class="flying-btn">
+                <div ng-click="buttonsHandler(1)">
+                    <p> Delete Movie (-) </p>
+                </div>
+            </div >
+            <div class="flying-btn">
+                <a ng-click="buttonsHandler(2)"> <!-- ui-sref=".edit"  -->
+                    <div>
+                        <p> Edit Movie (*) </p>
+                    </div>
+                </a>
+            </div >
+        </div>
+
+        <!-- Edit menu -->
+        <div class="right-content">
+            <div ui-view></div>
+       </div>
+
+    </div>
+</div>

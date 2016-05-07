@@ -1,0 +1,39 @@
+<div class="menu" ng-controller="keysController">
+    <!-- Close button -->
+    <a class="close" ui-sref="moviesList"><span>x</span></a>
+    <!-- Edit control -->
+    <div id="edit">
+        <!-- Movies edit -->
+        <form>
+            <p><strong>{{ menuOption + " " }}</strong> {{isEmpty(selectedMovie.title)}}</p>
+            <table>
+                <tr>
+                    <td><label for="in1">Title:</label></td>
+                    <td><input id="in1" type="text" ng-model="selectedMovie.title" ng-disabled="noMovies" ng-keydown="keyPress($event)" autofocus></td>
+                </tr>
+                <tr>
+                    <td><label for="in2">Year:</label></td>
+                    <td><input id="in2" type="text" ng-model="selectedMovie.year" ng-disabled="noMovies" ng-keydown="keyPress($event)"></td>
+                </tr>
+                <tr>
+                    <td><label for="in3">Duration:</label></td>
+                    <td><input id="in3" type="text" ng-model="selectedMovie.duration" ng-disabled="noMovies" ng-keydown="keyPress($event)"></td>
+                </tr>
+            </table>
+            <!-- Cast edit -->
+            <p><strong>Cast:</strong></p>
+            <div ng-repeat="actor in selectedMovie.cast" ng-class="{'odd': isOdd($index)}" class="actorEdit">
+                <form>
+                    <label for="in4">Name: </label>
+                    <input id="in4" type="text" placeholder="Name" ng-model="actor.name" ng-keydown="keyPress($event)">
+                    <label for="in5">Last Name: </label>
+                    <input id="in5" type="text" placeholder="LastName" ng-model="actor.lastName" ng-keydown="keyPress($event)">
+                    <label for="in6">Age: </label>
+                    <input id="in6"  type="text" placeholder="Age" ng-model="actor.age" ng-keydown="keyPress($event)">
+                    <div ng-click="deleteActor(index)" class="delete"><a>Delete (-)</a></div>
+                </form>
+            </div>
+            <a class="close" ng-click="newActor()" ng-class="{'disabled': noMovies}"><span>+ (Add Actor)</span></a>
+        </form>
+    </div>
+</div>
