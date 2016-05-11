@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Topic 3</title>
+    <!-- Dependencies -->
+    <script src="modules/dependencies/angular.js"></script>
+    <script src="modules/dependencies/angular-ui-router.js"></script>
+    <script src="modules/dependencies/ngStorage.js"></script>
+
+    <!-- App modules -->
+    <script src="modules/localStorage/initializeStorageService.js"></script>
+    <script src="modules/localStorage/localStorageService.js"></script>
+    <script src="modules/localStorage/localStorageController.js"></script>
+    <script src="modules/authenticationService.js"></script>
+    <script src="modules/SpootifyController.js"></script>
+    <script src="modules/mainController.js"></script>
+
+    <!-- CSS stylesheet -->
+    <link type="text/css" rel="stylesheet" href="css/normalize.css">
+    <link type="text/css" rel="stylesheet" href="css/index.css">
+</head>
+
+<body ng-app="mainController" ng-controller="ApiCaller">
+    INDEX APP
+    <div ui-view></div>
+</body>
+</html>
+
