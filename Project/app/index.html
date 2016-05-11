@@ -13,8 +13,8 @@
     <script src="modules/localStorage/initializeStorageService.js"></script>
     <script src="modules/localStorage/localStorageService.js"></script>
     <script src="modules/localStorage/localStorageController.js"></script>
-    <script src="modules/authenticationService.js"></script>
-    <script src="modules/SpootifyController.js"></script>
+    <script src="modules/webApiCall/authenticationService.js"></script>
+    <script src="modules/webApiCall/spootifyController.js"></script>
     <script src="modules/mainController.js"></script>
 
     <!-- CSS stylesheet -->
@@ -22,9 +22,13 @@
     <link type="text/css" rel="stylesheet" href="css/index.css">
 </head>
 
-<body ng-app="mainController" ng-controller="ApiCaller">
-    INDEX APP
-    <div ui-view></div>
+<body ng-app="mainController"  ng-controller="myApp">
+<div ng-controller="localStorageCtrl">
+    <div ng-controller="spootifyCaller">
+        INDEX APP3
+        <div ui-view></div>
+    </div>
+</div>
 </body>
 </html>
 

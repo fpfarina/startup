@@ -1,6 +1,6 @@
 'use strict';
 
-let appInitSvc = angular.module('appInitSvc', []);
+var appInitSvc = angular.module('appInitSvc', []);
 
 appInitSvc.service('InitMovies', ['MoviesList', function (MoviesList){
 
