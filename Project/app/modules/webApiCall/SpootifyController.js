@@ -9,6 +9,7 @@ spootifyController.controller('spootifyCaller', ['$scope', '$templateCache', '$l
         var locate = function () {
 
             var queryParameters = $authentication.readUrlParameters(String($location.$$absUrl));
+            console.log("COW");
             console.log(queryParameters.error);
             if (queryParameters.error == null) {
                 //APP can START!!
@@ -17,12 +18,12 @@ spootifyController.controller('spootifyCaller', ['$scope', '$templateCache', '$l
                 console.log("ENTER");
 
 
-                localStorage.data.token = queryParameters.code;
+                localStorage.data.token = queryParameters.token;
 
                 $scope.userState = queryParameters.state;
 
                 console.log(localStorage.data.token);
-                $authentication.setAuthorizationCode(localStorage.data.token);
+                $authentication.setToken(localStorage.data.token);
                 var header = {'Content-Type':'application/x-www-form-urlencoded'};
                 //var header = { Authorization: ('bearer' + localStorage.data.token) };
                 /*var header = {
@@ -40,11 +41,11 @@ spootifyController.controller('spootifyCaller', ['$scope', '$templateCache', '$l
                 switch ($scope.appState) {
                     case '1':
                         //User must login -> Prepare login.
-                        if (queryParameters.error == "not_query")
+                        /*if (queryParameters.error == "not_query")
                             if ($state.current != 'index')
                                 $state.go('index');
                             else
-                                console.log("ENTER else");
+                                console.log("ENTER else");*/
                         $scope.appMessage = queryParameters.error;
                         localStorage.data.appState.index = "0";
                         $scope.appState = "0";
