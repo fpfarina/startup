@@ -324,33 +324,10 @@ app.config(['$stateProvider', '$locationProvider','$urlRouterProvider',function(
 
     $stateProvider
         .state('login', {
-            url:  "/login",
+            url:  "/",
             templateUrl: "modules/partials/login.html"
         })
-/*
-        .state('session', {
-            url: "/session",
-            params: {
-                access_token: null,
-                error: null,
-                state: null,
-                token_type: null,
-                expires_in: null
-            },
-            templateUrl: "modules/partials/session.html"
-        });
-*/
-/*
-        .state('session', {
-            onEnter: function(){
-                if($stateParams == $stateParams){
-                    alert(success);
-                }
-            },
-            url: '*session',
-            templateUrl: "modules/partials/session.html"
-        });
-  */
+
         .state('session2', {
             url: '/{error}&access_token&token_type&state',
             //url: '/{session}{page:(?:/[^/]+)?}',
