@@ -1,0 +1,117 @@
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top:0;
+    margin-top: 0;
+}
+
+.appHeader {
+    text-align: center;
+    margin-top: -20px;
+    padding: 30px;
+    background-color: #080808;
+    color: white;
+    box-shadow: 0 3px 1px rgba(100,100,100,0.75);
+}
+
+.appHeader h1 {
+    font-size: 42px;
+}
+
+.space-big {
+    margin-top: 40px;
+}
+.space-small {
+    margin-top: 20px;
+}
+
+.loginButton {
+    width: 200px;
+}
+.loginButton  span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.loginButton span:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: -1px;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.loginButton:hover span {
+    padding-right: 20px;
+}
+
+.loginButton:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.appNav div{
+    font-size: 14px;
+    cursor: pointer;
+    text-align:center;
+    padding: 0 8px;
+}
+
+.appNav div  p {
+    background-color: lavender;
+    padding: 20px;
+    box-shadow: 1px 1px 1px rgba(100,100,100,0.75);
+}
+
+.appNav div p:hover {
+    cursor: pointer;
+    background-color: #d6d5fa;
+    transition: color 0.5s;
+    transition-timing-function: ease-out ;
+    box-shadow: 2px 2px 4px rgba(100,100,100,0.75);
+}
+
+.error-div {
+    margin-top: 20px;
+    padding: 10px 35px 10px 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px rgba(100,100,100,0.75);
+    visibility: hidden;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.show {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .4s ease-in-out;
+}
+
+.error-div:hover {
+    background-color: #ffcecc;
+    color: red;
+    transition: color .1s, background-color 0.1s;
+}
+
+
+.center {
+    position:fixed;
+    right: 0;
+    bottom: 0;
+    width: 30%;
+}
+
+.close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+}

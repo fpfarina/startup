@@ -39,13 +39,13 @@ p {
 }
 
 /* Body box */
-.div-content {
+/*.div-content {
     width: 97%;
     margin: 0 auto;
 }
 
 /* Defining h1, h2, h3*/
-
+/*
 h1 {
     text-align: center;
     font-size: 50px;
@@ -85,19 +85,20 @@ h3 {
 }
 
 /* Movies - List */
-
+/*
 .div-movies {
    text-align: center;
     padding: 5px;
 
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none;   /* Chrome/Safari/Opera */
-    -khtml-user-select: none;    /* Konqueror */
-    -moz-user-select: none;      /* Firefox */
-    -ms-user-select: none;       /* Internet Explorer/Edge */
+    -webkit-touch-callout: none; /* iOS Safari
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
-
+*/
+/*
 .div-movies > ul > li {
     padding: 20px;
     width: 100%;
@@ -117,7 +118,7 @@ h3 {
 }
 
 /* Movie Data */
-
+/*
 .div-movies-data {
     text-align: center;
     padding: 5px;
@@ -128,7 +129,7 @@ h3 {
 }
 
 /* Actors data */
-
+/*
 .div-movies-data > ul > li > ul > li{
     padding: 2px 0;
     width: 100%;
@@ -141,21 +142,22 @@ h3 {
 */
 
 /* Buttons */
-
+/*
 .flying-btn {
     float: left;
     margin: 5px auto;
     width: 100%;
 	cursor: pointer;
 
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none;   /* Chrome/Safari/Opera */
-    -khtml-user-select: none;    /* Konqueror */
-    -moz-user-select: none;      /* Firefox */
-    -ms-user-select: none;       /* Internet Explorer/Edge */
+    -webkit-touch-callout: none; /* iOS Safari
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
-
+*/
+/*
 .flying-btn div {
     user-select: none;
     -webkit-box-shadow: 2px 2px 1px 0 rgba(50,50,50,0.75);
@@ -176,7 +178,7 @@ h3 {
 }
 
 /* Edit content */
-
+/*
 .menu {
 	padding: 15px;
 }
@@ -210,7 +212,7 @@ h3 {
 }
 
 /* Table actor */
-
+/*
 .actorEdit {
     border: 1px solid gray;
     padding: 6px 10px;
@@ -243,13 +245,15 @@ h3 {
     margin-right: 5px;
 
     -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none;   /* Chrome/Safari/Opera */
-    -khtml-user-select: none;    /* Konqueror */
-    -moz-user-select: none;      /* Firefox */
-    -ms-user-select: none;       /* Internet Explorer/Edge */
+/*
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
-
+*/
+/*
 .close > span:last-child{
     margin-top: 3px;
     margin-bottom: 5px;

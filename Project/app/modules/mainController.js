@@ -7,12 +7,13 @@ var mainController = angular.module('mainController', ['spootifyController', 'ui
 mainController.config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.deferIntercept();
-    $urlRouterProvider.otherwise("/index");
+
+  //  $urlRouterProvider.otherwise("/index");
 
     $stateProvider
         .state('index', {
             url:  "/index",
-            templateUrl: "modules/partials/authenticate.html"
+            templateUrl: "modules/partials/login.html"
         })
         .state('authenticated', {
             url: "/authenticated",
@@ -24,6 +25,8 @@ mainController.config(['$stateProvider', '$urlRouterProvider',function($statePro
 
 mainController.run(['$rootScope', '$urlRouter', '$location', '$state', function ($rootScope, $urlRouter, $location, $state) {
     $rootScope.$on('$locationChangeSuccess', function(e, newUrl, oldUrl) {
+
+        $rootScope.$on("$stateChangeError", console.log.bind(console));
         // Prevent $urlRouter's default handler from firing
         e.preventDefault();
 

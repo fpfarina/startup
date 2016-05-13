@@ -63,12 +63,12 @@ authenticationService.service('$authentication', ['$http', function ($http) {
 
     this.setToken = function (newCode) {
         token = newCode;
-        conection.token = newCode;
-        this.apiConnection = makeQueryParameters(conection, "");
+        connection.token = newCode;
+        this.apiConnection = makeQueryParameters(connection, "");
     };
 
 
-    var conection = {
+    var connection = {
         grant_type: 'authorization_code',
         token: token,
         redirect_uri: 'http://localhost:8080/#/authenticated',
@@ -87,7 +87,7 @@ authenticationService.service('$authentication', ['$http', function ($http) {
         return href;
     };
 
-    this.apiConnection = makeQueryParameters(conection, "");
+    this.apiConnection = makeQueryParameters(connection, "");
     this.urlAuthenticate = makeQueryParameters(configAuthentication, 'https://accounts.spotify.com/authorize?');
 
 
@@ -98,7 +98,6 @@ authenticationService.service('$authentication', ['$http', function ($http) {
         console.log(checkUrl);
             if (checkUrl.includes('&')) {
                 checkUrl = checkUrl.slice(checkUrl.indexOf('#') + 2);
-                console.log(checkUrl);
                 var queryParametersArray = checkUrl.split("&");
                 while (queryParametersArray.length > 0) {
                     thisParameter = queryParametersArray.pop().split("=");
@@ -106,10 +105,6 @@ authenticationService.service('$authentication', ['$http', function ($http) {
                 }
             } else
                 queryParameters.error = "bad_query";
-
-        //else
-          //  queryParameters.error = "not_query";
-        console.log(queryParameters);
         return queryParameters;
     };
 
