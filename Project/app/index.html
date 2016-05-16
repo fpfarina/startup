@@ -2,8 +2,12 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="description" content="Bootcamp final project">
+        <meta name="keywords" content="Bootcamp, globant, spotify, webui">
+        <meta name="author" content="Fernando Farina">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Final Project</title>
+
         <!-- Dependencies -->
         <script src="modules/dependencies/angular.js"></script>
         <script src="modules/dependencies/ngStorage.js"></script>
@@ -11,13 +15,13 @@
         <script src="modules/dependencies/oauth.js"></script>
 
         <!-- App modules -->
-        <script src="modules/usefulAppMethods.js"></script>
-        <script src="modules/classesFactory.js"></script>
-        <script src="modules/sessionService.js"></script>
+        <script src="modules/services/usefulAppMethods.js"></script>
+        <script src="modules/factories/classesFactory.js"></script>
+        <script src="modules/services/sessionService.js"></script>
         <script src="modules/mainController.js"></script>
-        <script src="modules/searchController.js"></script>
-        <script src="modules/myPlayListController.js"></script>
-        <script src="modules/localStorageController.js"></script>
+        <script src="modules/controllers/searchController.js"></script>
+        <script src="modules/controllers/myPlayListController.js"></script>
+        <script src="modules/controllers/localStorageController.js"></script>
 
         <!-- CSS stylesheet -->
         <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
@@ -27,14 +31,14 @@
     <body ng-app="app"  ng-controller="mainController">
         <div ng-controller="localStorageCtrl">
             <header class="appHeader">
-                <h1>SPOOTIFY APP</span></h1>
-                <small>Globant Bootcamp Final Project&nbsp;&nbsp;  <span class="glyphicon glyphicon-headphones"> </span></small>
+                <h1>SPOOTIFY APP</h1>
+                <small>Globant Bootcamp Final Project&nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-headphones"></span>
+                </small>
             </header>
             <div class="space-small"></div>
             <div ui-view></div>
-
             <div class = clearfix></div>
-
             <div ng-click="hide()" class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 text-center error-div alert alert-danger" ng-class="{ 'show': error }">
                 <div class="close">
                     <small>X</small>

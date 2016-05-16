@@ -2131,7 +2131,7 @@ function setupModuleLoader(window) {
            * @param {string} name service name
            * @param {Function} providerFunction Function for creating new instance of the service.
            * @description
-           * See {@link auto.$provide#factory $provide.factory()}.
+           * See {@link auto.$provide#factory $provide.factories()}.
            */
           factory: invokeLaterAndSetModuleName('$provide', 'factory'),
 
@@ -4494,7 +4494,7 @@ function createInjector(modulesToLoad, strictDi) {
       provider_ = providerInjector.instantiate(provider_);
     }
     if (!provider_.$get) {
-      throw $injectorMinErr('pget', "Provider '{0}' must define $get factory method.", name);
+      throw $injectorMinErr('pget', "Provider '{0}' must define $get factories method.", name);
     }
     return providerCache[name + providerSuffix] = provider_;
   }
@@ -4503,7 +4503,7 @@ function createInjector(modulesToLoad, strictDi) {
     return function enforcedReturnValue() {
       var result = instanceInjector.invoke(factory, this);
       if (isUndefined(result)) {
-        throw $injectorMinErr('undef', "Provider '{0}' must return a value from $get factory method.", name);
+        throw $injectorMinErr('undef', "Provider '{0}' must return a value from $get factories method.", name);
       }
       return result;
     };
@@ -4672,7 +4672,7 @@ function createInjector(modulesToLoad, strictDi) {
 
     function instantiate(Type, locals, serviceName) {
       // Check if Type is annotated and use just the given function at n-1 as parameter
-      // e.g. someModule.factory('greeter', ['$window', function(renamed$window) {}]);
+      // e.g. someModule.factories('greeter', ['$window', function(renamed$window) {}]);
       var ctor = (isArray(Type) ? Type[Type.length - 1] : Type);
       var args = injectionArgs(Type, locals, serviceName);
       // Empty object at position 0 is ignored for invocation with `new`, but required.
@@ -5143,7 +5143,7 @@ var $AnimateProvider = ['$provide', function($provide) {
    * @name $animateProvider#register
    *
    * @description
-   * Registers a new injectable animation factory function. The factory function produces the
+   * Registers a new injectable animation factories function. The factories function produces the
    * animation object which contains callback functions for each event that is expected to be
    * animated.
    *
@@ -5174,7 +5174,7 @@ var $AnimateProvider = ['$provide', function($provide) {
    * ```
    *
    * @param {string} name The name of the animation (this is what the class-based CSS value will be compared to).
-   * @param {Function} factory The factory function that will be executed to return the animation
+   * @param {Function} factory The factories function that will be executed to return the animation
    *                           object.
    */
   this.register = function(name, factory) {
@@ -7298,9 +7298,9 @@ function $TemplateCacheProvider() {
     <script>
       angular.module('compileExample', [], function($compileProvider) {
         // configure new 'compile' directive by passing a directive
-        // factory function. The factory function injects the '$compile'
+        factories
         $compileProvider.directive('compile', function($compile) {
-          // directive factory creates a link function
+          factories
           return function(scope, element, attrs) {
             scope.$watch(
               function(scope) {
@@ -7546,7 +7546,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    *    will match as <code>ng-bind</code>), or an object map of directives where the keys are the
    *    names and the values are the movies.
    * @param {Function|Array} directiveFactory An injectable directive factory function. See the
-   *    {@link guide/directive directive guide} and the {@link $compile compile API} for more info.
+   *    {@link guide/directive directive guide} and the {@link $factories compile API} for more info.
    * @returns {ng.$compileProvider} Self for chaining.
    */
   this.directive = function registerDirective(name, directiveFactory) {
@@ -7631,7 +7631,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    *      this component's controller. The object keys specify the property names under which the required
    *      controllers (object values) will be bound. See {@link ng.$compile#-require- `require`}.
    *    - `$...` – additional properties to attach to the directive factory function and the controller
-   *      constructor function. (This is used by the component router to annotate)
+   *      constructor function. (This is used by the cfactoriest router to annotate)
    *
    * @returns {ng.$compileProvider} the compile provider itself, for chaining of function calls.
    * @description
@@ -7714,8 +7714,8 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
     // Nothing in Angular looks for annotations on the factory function but we can't remove
     // it from 1.5.x yet.
 
-    // Copy any annotation properties (starting with $) over to the factory and controller constructor functions
-    // These could be used by libraries such as the new component router
+    // Copy any annotationfactoriesties (starting with $) over to the factory and controller constructor functions
+    // These could be used by libraries such factoriesnew component router
     forEach(options, function(val, key) {
       if (key.charAt(0) === '$') {
         factory[key] = val;
@@ -16426,7 +16426,7 @@ function $RootScopeProvider() {
      *
      *
      * @param {Object.<string, function()>=} providers Map of service factory which need to be
-     *                                       provided for the current scope. Defaults to {@link ng}.
+     *                                       provided for the curfactoriesope. Defaults to {@link ng}.
      * @param {Object.<string, *>=} instanceCache Provides pre-instantiated services which should
      *                              append/override services provided by `providers`. This is handy
      *                              when unit-testing and having the need to override a default
@@ -19510,7 +19510,7 @@ function $FilterProvider($provide) {
    *    (`myapp_subsection_filterx`).
    *    </div>
     * @param {Function} factory If the first argument was a string, a factory function for the filter to be registered.
-   * @returns {Object} Registered filter instance, or if a map of filters was provided then a map
+   * @returns {Object} Registered filterfactoriesce, or if a map of filters was provided then a map
    *    of the registered filter instances.
    */
   function register(name, factory) {

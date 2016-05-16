@@ -127,7 +127,7 @@ svc.service('sessionService', ['usefulAppMethods', '$http', 'List', 'ListCollect
                         body.uris.push("spotify:track:" + tracks[index].id)
                     }
                     console.log(body);
-                    object.post(href, body, console.log('Success'), console.log('FAIL'));
+                    object.post(href, body, console.log('Local list saved.'), console.log('Error: try again'));
                     //{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh",
                     //"spotify:track:1301WleyT98MSxVHPZCA6M"]}
                     // res.data.id
@@ -140,7 +140,7 @@ svc.service('sessionService', ['usefulAppMethods', '$http', 'List', 'ListCollect
             console.log('Success')
         } */
         , function (res){
-            console.log('Error')
+            alert('Error: try again')
         }
         );
     };
