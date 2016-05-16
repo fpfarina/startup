@@ -115,3 +115,39 @@ body {
     top: 8px;
     right: 12px;
 }
+
+.result {
+    cursor: pointer;
+    background-color: #f1f4ff;
+}
+
+.odd {
+    background-color: #fffbff;
+}
+
+.result:hover {
+    color: white;
+    background-color: #a4d5cd;
+}
+
+.activeIndex {
+    background-color: #aed5c8;
+}
+
+.icon {
+    position: absolute;
+    right: 30px;
+    top: 35px;
+}
+
+#search {
+    padding-right: 35px;
+}
+
+.iconb {
+    padding: 10px;
+}
+
+.iconb:hover {
+    background-color: #92ced5;
+}

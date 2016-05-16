@@ -25,16 +25,51 @@ svc.service('usefulAppMethods',[function(){
      *  (Expect 2 objects) Set all the properties values in the first object equal
      *  to the values given in the second object.
      */
-    this.setObjectValues = function(object, newValues){
+    /*this.setObjectValues = function(object, newValues){
         if (object != null)
             for (var property in newValues) {
-                if (newValues.hasOwnProperty(property))
-                    if (object.hasOwnProperty(property))
+                    if (object[property] !== 'function')
                         object[property] = newValues[property];
             }
         return object;
     };
+*/
 
+
+
+    this.setValor = function(object1, object2) {
+
+        if (object1 !== null) {
+            for (var property in object2) {
+                if (typeof object1[property] === 'function' || typeof object2[property] === 'function' )
+                    console.log('function - doing nothing *************', property, object1[property] , object2[property]);
+                else
+                    if (typeof object1[property] !== undefined){
+                        object1[property] = object2[property];
+                        console.log('CIWWWWWW', property, object1[property] , object2[property]);
+                    }
+            }
+        }
+    };
+
+    this.cloneObject = function (anotherObject, object){
+            if (!( object === null || typeof object  !== 'object' )) {
+                for (var parameter in object)
+                    anotherObject[parameter] = internalClone(object[parameter]);
+            }
+    };
+
+    var internalClone = function (object){
+            console.log( "   * " + object);
+            if ( object === null || typeof object  !== 'object' ) {
+                return object;
+            }
+            var temporal = {};
+            for ( var parameter in object ) {
+                temporal[ parameter ] = internalClone( object[ parameter ] );
+            }
+            return temporal;
+    };
 
 
     /*  SET COMPLEX OBJECT VALUES:
@@ -48,22 +83,20 @@ svc.service('usefulAppMethods',[function(){
      *
      */
     this.setComplexObjectValues = function(object, newValues) {
-        if (object != null) {
+        if (object !== null) {
             for (var property in newValues) {
-                if (newValues.hasOwnProperty(property))
-                    if (typeOf(object[property]) == 'function')
-                        break;
-                    else {
-                    if (object.hasOwnProperty(property))
-                        if (typeOf(object[property]) == typeOf(newValues[property])) // Equal TYPES?
-                            if (typeOf(object[property]) == 'object' && object[property] != null && object[property] != null) // Is it an object?
-                                this.setObjectValues(object[property], newValues[property]);
-                            else // Single property
-                                object[property] = newValues[property];
-                        else // No equal types!
-                        if ((typeOf(object[property]) != 'object' || object[property] == null)
-                            && (typeOf(newValues[property]) != 'object' || newValues[property] == null)) //Is it not an object? (null it is not an object for this function
+                if (typeOf(object[property]) == 'function')
+                    break;
+                else {
+                    if (typeOf(object[property]) === typeOf(newValues[property])) // Equal TYPES?
+                        if (typeOf(object[property]) === 'object' && object[property] !== null) // Is it an object?
+                            this.setComplexObjectValues(object[property], newValues[property]);
+                        else // Single property
                             object[property] = newValues[property];
+                    else // No equal types!
+                    if ((typeOf(object[property]) !== 'object' || object[property] === null)
+                        && (typeOf(newValues[property]) !== 'object' || newValues[property] === null)) //Is it not an object? (null it is not an object for this function
+                        object[property] = newValues[property];
                     }
             }
         }

@@ -1,9 +1,9 @@
 'use strict';
 
-var ctrl = angular.module('localStorageController', ['userSessionService', 'ngStorage']);
+var ctrl = angular.module('localStorageController', ['userSessionService', 'ngStorage', 'usefulMethodsService']);
 
 /* Local data controller -> save and load data*/
-ctrl.controller('localStorageCtrl', ['$scope', '$localStorage', 'sessionService', function($scope,$localStorage, sessionService){
+ctrl.controller('localStorageCtrl', ['$scope', '$localStorage', 'sessionService', 'List', 'usefulAppMethods', function($scope,$localStorage, sessionService, List, usefulAppMethods){
 
     var init = {
     sessionData : {
@@ -19,21 +19,33 @@ ctrl.controller('localStorageCtrl', ['$scope', '$localStorage', 'sessionService'
         display_name : null,
         email : null,
         id : null,
-        profile_pic : null
-        }
+        profile_pic : null,
+        myPlayList: null,
+        search_results : {
+            response : null,
+            error : false
+            }
+         }
     };
-    // INICION SESION DESDE MI LOCAL STORAGE
+
+
     $localStorage.$default(init);
+    console.log('-----------------------------------',$localStorage.sessionData.myPlayList);
     sessionService.setSession($localStorage.sessionData);
+
+    sessionService.myPlayList = new List('myPlayList');
+    usefulAppMethods.setValor (sessionService.myPlayList, $localStorage.sessionData.myPlayList);
+
     sessionService.checkingSession = false;
     sessionService.cleanCache();
 
-    if (sessionService.access_token == null)
-        sessionService.ping();
-            
-    
     sessionService.ping();
+
     // Now, make the syncro:
     $localStorage.sessionData = sessionService;
+
+    console.log('*******************************---------', sessionService.codeSEcret);
+        
+
 
 }]);

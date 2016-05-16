@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app', ['ui.router', 'localStorageController', 'userSessionService', 'usefulMethodsService']);
+var app = angular.module('app', ['ui.router', 'localStorageController', 'userSessionService', 'usefulMethodsService', 'classesFactory', 'searchCtrl', 'myPlayListCtrl']);
 
 /*********************************************************
  *  UI ROUTER CONFIG:                                    *
@@ -35,6 +35,11 @@ app.config(['$stateProvider', '$locationProvider','$urlRouterProvider',function(
         .state('session.search', {
             url: "/search",
             templateUrl: "modules/partials/session/search.html"
+        })
+
+        .state('session.myPlayList', {
+            url: "/myPLayList",
+            templateUrl: "modules/partials/session/myPlayList.html"
         });
 
 }]);
@@ -47,6 +52,7 @@ app.run(['$rootScope', '$urlRouter', '$location', '$state', 'sessionService', fu
         // Prevent $urlRouter's default handler from firing
         e.preventDefault();
 
+        // This function return the state name of the path
         var where = function (url){
             var body;
             var head;
@@ -63,9 +69,8 @@ app.run(['$rootScope', '$urlRouter', '$location', '$state', 'sessionService', fu
 
 
 
-        var checking = function (itself, timeOut=0) {
-            if (itself.checkingSession == true && timeOut < 1000) {
-                console.log(timeOut);
+        var checking = function (itself, timeOut) {
+             if (itself.checkingSession == true && timeOut < 1000) {
                 setTimeout(
                     function(){
                         checking(itself, timeOut+1);
@@ -108,7 +113,7 @@ app.run(['$rootScope', '$urlRouter', '$location', '$state', 'sessionService', fu
         };
 
         console.log('checking');
-        checking(sessionService);
+        checking(sessionService,0);
 
     });
     $urlRouter.listen();
@@ -121,7 +126,7 @@ app.controller('mainController',['$scope', 'sessionService', 'usefulAppMethods',
         var error = String(err);
         if (error = 'The popup was closed')
             error += '. Please, try to login again.';
-        $scope.$apply(function(){
+            $scope.$apply(function(){
             $scope.error = true;
             $scope.errorMessage = error;
         });
@@ -131,7 +136,7 @@ app.controller('mainController',['$scope', 'sessionService', 'usefulAppMethods',
         var error = String(err);
         if (error = 'Unauthorized')
             error = "The session has expired. Please login again.";
-        $scope.$apply(function(){
+            $scope.$apply(function(){
             $scope.error = true;
             $scope.errorMessage = error;
         });
@@ -140,28 +145,29 @@ app.controller('mainController',['$scope', 'sessionService', 'usefulAppMethods',
     $scope.hide = function () {
       $scope.error = false;
     };
-    /* */
+
 
     /* LOGIN MODULE */
     $scope.login = function () {
-        OAuth.initialize('oQT0QgdjsWoR3Kry0baWoEuokq0');
-        OAuth.popup('spotify')
+        OAuth.initialize('oQT0QgdjsWoR3Kry0baWoEuokq0'); //incializo
+        OAuth.popup('spotify') 
             .done(function (result) {
-                console.log(sessionService);
+                console.log('**LOGIN **');
                 sessionService.setSession(result);
-                sessionService.get('https://api.spotify.com/v1/me')
+                result.get('https://api.spotify.com/v1/me')
                     .done(function (res) {
                         sessionService.profile_pic =  res.images[0].url;
                         sessionService.setSession(res);
                         $scope.$apply($scope.loadScopeData());
                         sessionService.logged = true;
+                        sessionService.notFirstTime = true;
                         sessionService.cleanCache();
+                        sessionService.codeSEcret = 'ASDASDLASDKASKDALSDKASLDKALSDKASLDKASLDAKSD'
                         $state.go('session.welcome');
-
                     })
-                    .fail(showError);
+                    .fail(showError);//error
                 })
-            .fail(showError);
+            .fail(showError); //error
    };
 
     $scope.loadScopeData = function() {
@@ -187,38 +193,13 @@ app.controller('mainController',['$scope', 'sessionService', 'usefulAppMethods',
     });
 
 
-    //debug button
-    $scope.debug = function () {
-        $scope.showDebug = !($scope.showDebug);
-        console.log($scope.error);
-        console.log(sessionService);
-    };
-
     $scope.logOut = function (){
             sessionService.reset();
             sessionService.logOut = true;
             $state.go('login');
     };
 
+        
 
 }]);
 
-app.controller('searchController',['$scope', 'sessionService', 'usefulAppMethods',
-    function($scope, sessionService, usefulAppMethods){
-
-    var wait = false;
-
-    $scope.search = function () {
-        if (wait = false) {
-            sessionService.search($scope.string);
-            wait = true;
-            setTimeout(function () {
-                wait = true;
-                sessionService.search($scope.string);
-            },500);
-        }
-    };
-
-      $scope.show = sessionService.search_results.response.data.tracks.items[0];
-
-}]);
