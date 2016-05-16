@@ -1,9 +1,11 @@
 'use strict';
 
-/********************************************************************
- *  Useful App Methods:                                             *
- *  A collection of new methods that I used in this application     *
- ********************************************************************/
+/*****************************************************************************************
+ *  USEFUL APP METHODS:                                                                  *
+ *  A collection of new methods that I used in this application.                         *
+ *  NOTE: I used most of this functions in first moments of this app, now most of them   *
+ *  are not being used.                                                                  *
+ *****************************************************************************************/
 var svc = angular.module('usefulMethodsService',[]);
 svc.service('usefulAppMethods',[function(){
 
@@ -16,28 +18,11 @@ svc.service('usefulAppMethods',[function(){
         var string = typeof(variable);
         if  (Array.isArray(variable))
             string = 'array';
-        console.log(string);
         return string
     };
 
-    /*  SET (SIMPLE) OBJECT VALUES:
-     *  Public method
-     *  (Expect 2 objects) Set all the properties values in the first object equal
-     *  to the values given in the second object.
-     */
-    /*this.setObjectValues = function(object, newValues){
-        if (object != null)
-            for (var property in newValues) {
-                    if (object[property] !== 'function')
-                        object[property] = newValues[property];
-            }
-        return object;
-    };
-*/
-
-
-
-    this.setValor = function(object1, object2) {
+    /* setValues copy parameters from an objet to another object, but not functions. */
+    this.setValues = function(object1, object2) {
         if (object1 !== null) {
             for (var property in object2) {
                 if (typeof object1[property] === 'function' || typeof object2[property] === 'function' )
@@ -50,6 +35,7 @@ svc.service('usefulAppMethods',[function(){
         }
     };
 
+    /* CLONE */
     this.cloneObject = function (anotherObject, object){
             if (!( object === null || typeof object  !== 'object' )) {
                 for (var parameter in object)
@@ -58,7 +44,6 @@ svc.service('usefulAppMethods',[function(){
     };
 
     var internalClone = function (object){
-            console.log( "   * " + object);
             if ( object === null || typeof object  !== 'object' ) {
                 return object;
             }
@@ -137,13 +122,10 @@ svc.service('usefulAppMethods',[function(){
             if (popString.includes('=')){
                 popString = popString.replace('?', '');
                 popString = popString.replace('#', '');
-                console.log("porpString = " + popString);
                 var queryParameters = {};
                 var thisParameter;
                 if (popString.includes('&')) {
-                    console.log("includes &");
                     var queryParametersArray = popString.split("&");
-                    console.log(queryParametersArray);
                     while (queryParametersArray.length > 0) {
                         thisParameter = queryParametersArray.pop().split("=");
                         queryParameters[thisParameter[0]] = thisParameter[1];
@@ -157,7 +139,6 @@ svc.service('usefulAppMethods',[function(){
             else {
             }
         }
-        console.log(queryParameters);
         return queryParameters;
     };
 

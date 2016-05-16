@@ -17,6 +17,7 @@ classFactory.factory('Track', [function(){
     }
 }]);
 
+/* Factory of tracks List */
 classFactory.factory('List', ['Track', function(Track){
     return function(name, id, isPublic, ownerId) {
         this.tracks = [];
@@ -39,6 +40,7 @@ classFactory.factory('List', ['Track', function(Track){
     }
 }]);
 
+/* Factory of playlist */
 classFactory.factory('ListCollection', ['List', function(List){
     return function(userId) {
         this.lists = [];

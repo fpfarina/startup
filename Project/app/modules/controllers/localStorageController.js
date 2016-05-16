@@ -1,10 +1,14 @@
 'use strict';
 
-var ctrl = angular.module('localStorageController', ['userSessionService', 'ngStorage', 'usefulMethodsService']);
+/*****************************************************************************************
+ *  LOCAL STORAGE CONTROLLER:                                                            *
+ *  Save data session, to avoid re-login, and local playlists                            *
+ *****************************************************************************************/
 
-/* Local data controller -> save and load data*/
+var ctrl = angular.module('localStorageController', ['userSessionService', 'ngStorage', 'usefulMethodsService']);
 ctrl.controller('localStorageCtrl', ['$scope', '$localStorage', 'sessionService', 'List', 'usefulAppMethods', function($scope,$localStorage, sessionService, List, usefulAppMethods){
 
+    /*INIT VALUES*/
     var init = {
     sessionData : {
         logged : false,
@@ -28,24 +32,16 @@ ctrl.controller('localStorageCtrl', ['$scope', '$localStorage', 'sessionService'
          }
     };
 
-
+    /*LOADING*/
     $localStorage.$default(init);
-    console.log('-----------------------------------',$localStorage.sessionData.myPlayList);
     sessionService.setSession($localStorage.sessionData);
-
     sessionService.myPlayList = new List('myPlayList');
-    usefulAppMethods.setValor (sessionService.myPlayList, $localStorage.sessionData.myPlayList);
-
+    usefulAppMethods.setValues(sessionService.myPlayList, $localStorage.sessionData.myPlayList);
     sessionService.checkingSession = false;
     sessionService.cleanCache();
+    sessionService.ping(); // check token stored
 
-    sessionService.ping();
-
-    // Now, make the syncro:
+    // Now, make sync. START TO SAVE DATA IN REAL TIME:
     $localStorage.sessionData = sessionService;
-
-    console.log('*******************************---------', sessionService.codeSEcret);
-        
-
 
 }]);
