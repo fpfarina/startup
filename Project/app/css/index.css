@@ -1,0 +1,249 @@
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Add this class to a div to add a top margin */
+.space-big {
+    margin-top: 40px;
+}
+
+.space-small {
+    margin-top: 20px;
+}
+
+/* App HEADER */
+
+.appHeader {
+    text-align: center;
+    margin-top: -20px;
+    padding: 40px;
+    background-color: #080808;
+    color: white;
+    box-shadow: 0 3px 1px rgba(100,100,100,0.75);
+}
+
+.appHeader h1 {
+    font-size: 42px;
+}
+
+/* App NAV */
+
+.appNav div  p {
+    background-color: lavender;
+    padding: 20px;
+    box-shadow: 1px 1px 1px rgba(100,100,100,0.75);
+}
+
+.appNav div p:hover {
+    cursor: pointer;
+    background-color: #d6d5fa;
+    transition: color 0.5s;
+    transition-timing-function: ease-out ;
+    box-shadow: 2px 2px 4px rgba(100,100,100,0.75);
+}
+
+.appNav div{
+    font-size: 14px;
+    cursor: pointer;
+    text-align:center;
+    padding: 0 8px;
+}
+
+/* Login button */
+
+.loginButton {
+    width: 200px;
+}
+
+.loginButton  span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.loginButton span:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: -1px;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.loginButton:hover span {
+    padding-right: 20px;
+}
+
+.loginButton:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+/* Error div */
+
+.error-div {
+    margin-top: 20px;
+    padding: 10px 35px 10px 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px rgba(100,100,100,0.75);
+    visibility: hidden;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.error-div:hover {
+    background-color: #ffcecc;
+    color: red;
+    transition: color .1s, background-color 0.1s;
+}
+
+.show {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .4s ease-in-out;
+}
+
+/* Attributes classes */
+
+.center {
+    position:fixed;
+    right: 0;
+    bottom: 0;
+    width: 30%;
+}
+
+.close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+}
+
+.odd {
+    background-color: #fffbff;
+}
+
+/* Results */
+
+.result {
+    cursor: pointer;
+    background-color: #f1f4ff;
+}
+
+.result:hover {
+    background-color: #a4d5cd;
+}
+
+.activeIndex {
+    background-color: #aed5c8;
+}
+
+#search {
+    padding-right: 35px;
+}
+
+/* ICONS */
+
+.icon {
+    position: absolute;
+    right: 30px;
+    top: 35px;
+}
+
+.iconb {
+    font-size: 40px;
+    padding: 10px;
+    color: gray;
+}
+
+.iconb:hover {
+    font-size: 40px;
+    background-color: #92ced5;
+   color: black;
+}
+
+.iconb:active {
+    color: white;
+    font-size: 38px;
+    padding: 11px;
+}
+
+.iconc {
+    font-size: 16px;
+    padding-left: 20px;
+    color: gray;
+}
+
+.iconc:hover {
+    color: black;
+}
+
+.iconc:active {
+    color: white;
+    font-size: 17px;
+}
+
+.needSpace {
+    width: 60px;
+}
+
+/* Order butttons */
+
+.order {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.order:hover {
+    background-color: transparent;
+}
+
+.order span:hover {
+    background-color: #c5daee;
+}
+
+#big {
+    font-size: 50px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Show and hide in phones and tablets */
+
+.hidephone {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .hidephone {
+        display: table-cell;
+        padding-bottom: 80px;
+    }
+
+    .showphone {
+        display: none;
+    }
+
+    .hidephoneDiv {
+        display: inline;
+    }
+
+    .order:hover {
+        background-color: #c5daee;
+    }
+
+    .order span:hover {
+        background-color: transparent;
+    }
+}

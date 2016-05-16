@@ -1,0 +1,41 @@
+<div class='container' ng-controller="myPlayListController">
+        <h1 id="big" class="text-center"> {{ getListName() }} </h1>
+        <div class="space-small"> </div>
+        <label>
+            <span>Select a list:</span>
+            <span class="input-group">
+            <span class="input-group-addon" id="sizing-addon2">
+            <span class="glyphicon glyphicon-star-empty"> </span>
+            </span>
+            <select placeholder="Select a list" ng-change="changeSelect()" ng-model="index" id="selectList" class="form-control  input-lg">
+                <option value="0"> My Local Playlist</option>
+                <option  value="{{ $index + 1 }}" ng-repeat="list in playLists.lists.lists"> {{ list.name }} </option>
+            </select>
+            </span>
+        </label>
+        <div class="space-small"></div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th> Song </th>
+                    <th> Artist </th>
+                    <th> Duration </th>
+                    <th class="hidephone"> Album </th>
+                    <th class="needSpace"> </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="result" ng-repeat="track in list;" ng-click="set($index)" ng-class="{ 'activeIndex' : select == $index, 'odd' : isOdd($index)} ">
+                    <td> {{track.name}} </td>
+                    <td> {{track.artists[0]}} </td>
+                    <td> {{msToMinutes(track.duration)}} </td>
+                    <td class="hidephone"> {{track.albumName}} </td>
+                    <td class="needSpace"> <span class="iconc glyphicon glyphicon-minus" ng-click="delete()" ng-show="$index == select && index == 0"> </span> </td>
+                </tr>
+                </tbody>
+            </table>
+            <label>
+                <input class="form-control" type=text ng-model="name" placeholder="New list name">
+            </label>
+            <button class="btn btn-default" type="submit" ng-click="newPlaylist()"  ng-disabled="!name"> New List&nbsp; <span class="glyphicon glyphicon-save"> </span> </button>
+</div>
