@@ -38,15 +38,13 @@ svc.service('usefulAppMethods',[function(){
 
 
     this.setValor = function(object1, object2) {
-
         if (object1 !== null) {
             for (var property in object2) {
                 if (typeof object1[property] === 'function' || typeof object2[property] === 'function' )
-                    console.log('function - doing nothing *************', property, object1[property] , object2[property]);
+                    var nothing;
                 else
                     if (typeof object1[property] !== undefined){
                         object1[property] = object2[property];
-                        console.log('CIWWWWWW', property, object1[property] , object2[property]);
                     }
             }
         }

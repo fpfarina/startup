@@ -27,11 +27,10 @@
     <body ng-app="app"  ng-controller="mainController">
         <div ng-controller="localStorageCtrl">
             <header class="appHeader">
-                <h1>SPOOTIFY APP</h1>
-                <small>Globant Bootcamp Final Project</small>
+                <h1>SPOOTIFY APP</span></h1>
+                <small>Globant Bootcamp Final Project&nbsp;&nbsp;  <span class="glyphicon glyphicon-headphones"> </span></small>
             </header>
-            <div class="space-big"></div>
-
+            <div class="space-small"></div>
             <div ui-view></div>
 
             <div class = clearfix></div>
@@ -41,12 +40,6 @@
                     <small>X</small>
                 </div>
                 <b>ERROR!!: </b>{{ errorMessage }}
-            </div>
-            <button class="btn-danger center" ng-click="debug()">DEBUG BUTTON</button>
-            <div class = clearfix></div>
-            <div class="col-md-3" ng-show="showDebug">
-                <p> SHOW: {{ display_name }} </p>
-                <img src="{{ userImage }}" alt="nothing" class="img-circle" class="img-responsive">
             </div>
         </div>
     </body>

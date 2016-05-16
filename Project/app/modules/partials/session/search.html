@@ -1,6 +1,7 @@
 <div class='space-small'></div>
 <div class='container' ng-controller="searchController">
-    <div class="col-md-offset-2 col-md-8 form-group">
+    <div class="space-small hidephone"></div>.
+    <div class="col-md-offset-1 col-md-10 form-group">
         <label for="search">Search:</label>
         <div><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span><input  id="search" type="text" class="form-control" ng-model="string" placeholder="Search" ng-Change="search()"></div>
         {{ show }} <br>
@@ -8,18 +9,28 @@
         <table class="table">
             <thead>
             <tr>
-                <th  class="order" ng-click="safeApply(orderBy(0))">Song</th>
-                <th  class="order" ng-click="safeApply(orderBy(1))">Artist</th>
-                <th  class="order" ng-click="safeApply(orderBy(2))">Duration</th>
+                <th class="needSpace"></th>
+                <th  class="order" ng-click="safeApply(orderBy(0))">
+                    <span  ng-click="safeApply(orderBy(1))"> Song </span>
+                    <span class="showphone">  / </span>
+                    <span class="showphone" ng-click="safeApply(orderBy(1))"> Artist</span></th>
+                <th  class="hidephone order" ng-click="safeApply(orderBy(1))">Artist</th>
+                <th class="hidephone order" class="order" ng-click="safeApply(orderBy(2))">Duration</th>
                 <th class="hidephone order"  ng-click="safeApply(orderBy(3))">Album</th>
                 <th  class="needSpace" ng-click=""></th>
             </tr>
             </thead>
             <tbody>
                 <tr  class="result" ng-repeat="track in results.data.list.tracks" ng-click="set($index)" ng-class="{'activeIndex': select == $index, 'odd': isOdd($index)}">
-                    <td>{{track.name}}</td>
-                    <td>{{track.artists[0]}}</td>
-                    <td>{{msToMinutes(track.duration)}}</td>
+                    <td><img ng-src ="{{track.imageUrl}}"></td>
+                    <td><span><b>{{track.name}}</b></span>
+                        <span class = "showphone"><br>
+                            <small>{{track.artists[0]}} // {{track.albumName}}</small><br>
+                            <small>{{msToMinutes(track.duration)}}</small>
+                        </span>
+                    </td>
+                    <td class ="hidephone">{{track.artists[0]}}</td>
+                    <td class="hidephone">{{msToMinutes(track.duration)}}</td>
                     <td class="hidephone">{{track.albumName}} </td>
                     <td class="needSpace"><span ng-click="addTrack()" class="iconb glyphicon glyphicon-plus" ng-show="$index == select "></span></td>
                 </tr>

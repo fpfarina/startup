@@ -74,7 +74,6 @@ app.run(['$rootScope', '$urlRouter', '$location', '$state', 'sessionService', fu
                 setTimeout(
                     function(){
                         checking(itself, timeOut+1);
-                        console.log(".");
                     },1);
             } else
             {   if (timeOut == 1000) {
@@ -85,8 +84,7 @@ app.run(['$rootScope', '$urlRouter', '$location', '$state', 'sessionService', fu
                 if (sessionService.logged == true && sessionService.firstTime()){ /* HERE I CHECK IF THE USER IT'S LOGGED OR NOT, and then i make a redirection */
                     if (where(newUrl).head == 'login' || where(newUrl).head == '' ){
                         console.log('1 -> LOGIN:');
-                        console.log(where(newUrl));
-                        console.log(newUrl);
+
                         $location.path('session/welcomeback');
                        // newUrl = 'session/welcome';
                     } else{
@@ -98,8 +96,7 @@ app.run(['$rootScope', '$urlRouter', '$location', '$state', 'sessionService', fu
                     $location.path('login');
                     //newUrl = 'login';
                     console.log('3 (no login) -> LOGIN:');
-                    console.log(where(newUrl));
-                    console.log(newUrl);
+
                     } else {
                     console.log('4 (no login) -> KILL:');
                     console.log(where(newUrl));
@@ -198,6 +195,7 @@ app.controller('mainController',['$scope', 'sessionService', 'usefulAppMethods',
             sessionService.logOut = true;
             $state.go('login');
     };
+
 
         
 

@@ -18,9 +18,12 @@ classFactory.factory('Track', [function(){
 }]);
 
 classFactory.factory('List', ['Track', function(Track){
-    return function(name) {
+    return function(name, id, isPublic, ownerId) {
         this.tracks = [];
         this.name = name;
+        this.id = id;
+        this.public = isPublic;
+        this.ownerId = ownerId;
 
         
         this.addTrack = function(id, name, album_name, image_url, track_number, duration_ms, preview_url, artists) {
@@ -33,5 +36,28 @@ classFactory.factory('List', ['Track', function(Track){
         };
 
         
+    }
+}]);
+
+classFactory.factory('ListCollection', ['List', function(List){
+    return function(userId) {
+        this.lists = [];
+        this.userId = userId;
+
+        
+        this.addList = function(list){
+          this.lists.push(list);  
+        };
+
+        this.newList = function(name, id, isPublic, ownerId) {
+            var list = new List(name, id, isPublic, ownerId);
+            this.addList(list);
+        };
+
+        this.deleteList = function(index){
+            this.tracks.splice(index,1);
+        };
+
+
     }
 }]);

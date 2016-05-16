@@ -8,7 +8,6 @@ controller.controller('myPlayListController',['$scope', 'sessionService', 'List'
 
         $scope.$on('$locationChangeSuccess', function(event) {
             sessionService.ping();
-            console.log("ON");
             $scope.myPlayList = sessionService.myPlayList;
         });
 
@@ -31,12 +30,45 @@ controller.controller('myPlayListController',['$scope', 'sessionService', 'List'
         };
 
         $scope.delete = function($index) {
-            console.log('deleting');
             //sessionService.myPlayList.deleteTrack($index);
             $scope.myPlayList.deleteTrack($index);
-        }
+        };
 
+        $scope.playLists = {};
+        sessionService.getPlayLists($scope.playLists);
+        setTimeout(() => $scope.index = 0,1000);
+          
+        $scope.changeSelect = function() {
+            if ($scope.index > 0){
+                //sessionService.getPlayListsTracks( $scope.playLists.lists.lists[$scope.index-1].tracks, $scope.playLists.lists.lists[$scope.index-1].id);
+
+                var temp = $scope.playLists.lists.lists[$scope.index-1].tracks.tracks;
+                $scope.list = {};
+                $scope.list = temp;
+                console.log($scope.list);
+             }
+            else{
+                $scope.list = {};
+                $scope.list =  $scope.myPlayList.tracks;
+                console.log($scope.list.tracks);
+            }
+        };
+
+        $scope.getListName = function() {
+            if ($scope.index == 0)
+                return 'My local play list';
+            else
+                return $scope.playLists.lists.lists[$scope.index - 1].name
+        };
+        
+        $scope.index = 0;
+        $scope.list =  $scope.myPlayList.tracks;
+
+        $scope.save = function (){
+            sessionService.createPlaylist($scope.name,$scope.myPlayList.tracks);
+        };
 
         
 
-}]);
+
+    }]);

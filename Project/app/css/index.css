@@ -14,7 +14,7 @@ body {
 .appHeader {
     text-align: center;
     margin-top: -20px;
-    padding: 30px;
+    padding: 40px;
     background-color: #080808;
     color: white;
     box-shadow: 0 3px 1px rgba(100,100,100,0.75);
@@ -126,12 +126,16 @@ body {
 }
 
 .result:hover {
-    color: white;
+    /*color: white;*/
     background-color: #a4d5cd;
 }
 
 .activeIndex {
     background-color: #aed5c8;
+}
+
+#search {
+    padding-right: 35px;
 }
 
 .icon {
@@ -140,16 +144,37 @@ body {
     top: 35px;
 }
 
-#search {
-    padding-right: 35px;
-}
-
 .iconb {
+    font-size: 40px;
     padding: 10px;
+    color: gray;
 }
 
 .iconb:hover {
+    font-size: 40px;
     background-color: #92ced5;
+   color: black;
+}
+
+.iconb:active {
+    color: white;
+    font-size: 38px;
+    padding: 11px;
+}
+
+.iconc {
+    font-size: 16px;
+    padding-left: 20px;
+    color: gray;
+}
+
+.iconc:hover {
+    color: black;
+}
+
+.iconc:active {
+    color: white;
+    font-size: 17px;
 }
 
 .needSpace {
@@ -165,15 +190,41 @@ body {
     background-color: #c5daee;
 }
 
+.showphone {
+    display: none;
+}
+
+#big {
+    font-size: 50px;
+}
+
+.hidden {
+    display: none;
+}
+
+
 @media (max-width: 768px) {
     .hidephone {
         display:none;
-        visibility: hidden;
+     /*   visibility: hidden;
         width: 0;
-        height: 0;
+        height: 0;*/
     }
 
-    .iconb{
-        padding: 4px;
+    .showphone {
+        display: inline;
     }
+
+    .order {
+        padding: 5px;
+        cursor: pointer;
+    }
+
+    .order:hover {
+        background-color: transparent;
+    }
+    .order span:hover {
+        background-color: #c5daee;
+    }
+
 }

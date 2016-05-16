@@ -1,6 +1,18 @@
 <div class='container' ng-controller="myPlayListController">
-        <div class="col-md-offset-2 col-md-8 form-group">
-            <h1 class="text-center">My local play list</h1>
+        <h1 id="big" class="text-center"> {{ getListName() }}</h1>
+        <div class="space-small"></div>
+        <label><p>Select a list:</p>
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon2">
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                </span>
+                <select placeholder="Select a list" ng-change="changeSelect()" ng-model="index" id="selectList" class="form-control  input-lg">
+                    <option value=0 selected="selected"> My Local Playlist</option>
+                    <option  value="{{$index + 1}}" ng-repeat="list in playLists.lists.lists">{{list.name}}</option>
+                </select>
+            </div>
+        </label>
+        <div class="space-small"></div>
             <table class="table">
                 <thead>
                 <tr>
@@ -12,15 +24,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr  class="result" ng-repeat="track in myPlayList.tracks" ng-click="set($index)" ng-class="{'activeIndex': select == $index, 'odd': isOdd($index)}">
-                    <td>{{track.name}}</td>
+                <tr class="result" ng-repeat="track in list;" ng-click="set($index)" ng-class="{'activeIndex': select == $index, 'odd': isOdd($index)}">
+                        <td>{{track.name}}</td>
                     <td>{{track.artists[0]}}</td>
                     <td>{{msToMinutes(track.duration)}}</td>
                     <td class="hidephone">{{track.albumName}} </td>
-                    <td class="needSpace"><span class="iconb glyphicon glyphicon-minus" ng-click="delete()" ng-show="$index == select "></span></td>
+                    <td class="needSpace"><span class="iconc glyphicon glyphicon-minus" ng-click="delete()" ng-show="$index == select && index == 0"></span></td>
                 </tr>
                 </tbody>
             </table>
+            <label><input class="form-control" type=text ng-model="name" placeholder="List name"></input></label>
+            <button class="btn btn-default" type="submit" ng-click="save()"  ng-disabled="name == ''">Save <span class="glyphicon glyphicon-save"></span></button>
 
-        </div>
+    </div>
 </div>
